@@ -3,6 +3,9 @@ package com.fuparking;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
+import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
+import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -26,7 +29,10 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-        new ReactNativeConfigPackage()
+        new ReactNativeConfigPackage(),
+        new AppCenterReactNativeCrashesPackage(MainApplication.this, "ASK_JAVASCRIPT"),
+        new AppCenterReactNativeAnalyticsPackage(MainApplication.this, "ENABLE_IN_JS"),
+        new AppCenterReactNativePackage(MainApplication.this)
     );
   }
 
