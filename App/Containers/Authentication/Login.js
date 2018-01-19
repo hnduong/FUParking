@@ -11,13 +11,9 @@ import { App } from '../../Theme'
 import UserActions from '../../Redux/User'
 
 class Login extends FUPComponent {
-  state = {
-    email: '',
-    password: ''
-  }
 
   handleLogin = () => {
-    const { email, password } = this.state
+    const { email, password } = this.state.inputs
     this.props.login({ UID: email, Password: password, ApplicationDetails: null })
   }
 
@@ -67,7 +63,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  login: credentials => UserActions.loginRequest(credentials)
+  login: credentials => dispatch(UserActions.loginRequest(credentials))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

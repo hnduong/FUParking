@@ -3,7 +3,9 @@ import config from '../config'
 
 const { apiUrl } = config
 
-axios.interceptors.response.use((response) => {
+const api = axios.create({ baseURL: `${apiUrl}` })
+
+api.interceptors.response.use((response) => {
   if (response.status > 299) {
     response.ok = false
   } else {
@@ -11,8 +13,6 @@ axios.interceptors.response.use((response) => {
   }
   return response
 })
-
-const api = axios.create({ baseURL: `${apiUrl}` })
 
 /**
  *
@@ -38,9 +38,13 @@ const api = axios.create({ baseURL: `${apiUrl}` })
     "ExternalProviderKey": null
   }
  */
-const login = ({ ApplicationId = config.ApplicationId, UID, Password, ApplicationDetails }) =>
+const authorize = ({ ApplicationId = config.ApplicationId, UID, Password, ApplicationDetails }) =>
   api.post('/Authorize', { ApplicationId, UID, Password, ApplicationDetails })
 
+const getPublicUserAccountsDetails = ({ SID, ApplicationDetails }) =>
+  api.post('/GetPublicUserAccountDetails', { SID, ApplicationDetails })
+
 export default {
-  login
+  authorize,
+  getPublicUserAccountsDetails
 }

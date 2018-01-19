@@ -53,6 +53,9 @@
     "babel-preset-react-native": "4.0.0",
     "jest": "22.0.1",
     "react-test-renderer": "16.0.0",
+    "reactotron-redux": "^1.13.0",
+    "reactotron-react-native": "^1.14.0",
+    "reactotron-redux-saga": "^1.13.0",
     "redux-logger": "^3.0.6",
     "standard": "^10.0.3"
   },

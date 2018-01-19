@@ -9,20 +9,59 @@ const store = createStore()
 
 registerScreens(store, Provider)
 
-class App extends React.Component {
-  render () {
-    return null
-  }
-}
+const getRoot = state => state.App.get('root')
 
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: 'FUParking.Login',
-    navigatorStyle: {
-      navBarHidden: true,
-      statusBarHidden: false
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    store.dispatch({ type: 'TRACK_EVENT', name: 'Opened App' })
+    store.subscribe(this.onStoreUpdate.bind(this))
+    store.dispatch({ type: 'STARTUP' })
+  }
+
+  root = null
+
+  onStoreUpdate = () => {
+    const root = getRoot(store.getState())
+    if (this.root !== root) {
+      this.startApp(root)
+      this.root = root
     }
   }
-})
+
+  startApp = (root) => {
+    switch (root) {
+      case 'authentication':
+        Navigation.startSingleScreenApp({
+          screen: {
+            screen: 'FUParking.Login',
+            navigatorStyle: {
+              navBarHidden: true,
+              statusBarHidden: false
+            }
+          }
+        })
+        break
+      case 'authenticated':
+        Navigation.startSingleScreenApp({
+          screen: {
+            screen: 'FUParking.Home',
+            navigatorStyle: {
+              navBarHidden: true,
+              statusBarHidden: false
+            }
+          },
+          drawer: {
+            left: {
+              screen: 'FUParking.Drawer'
+            },
+            type: 'MMDrawer',
+            animationType: 'parallax'
+          }
+        })
+        break
+    }
+  }
+}
 
 export default App

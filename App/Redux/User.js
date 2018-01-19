@@ -22,8 +22,8 @@ export const INITIAL_STATE = fromJS({
 export const updateUser = (state, { user }) =>
   state.merge({ user })
 
-export const loginSuccess = (state, { token, user }) =>
-  state.merge({ token, user })
+export const loginSuccess = (state, { user }) =>
+  state.merge({ user })
 
 export const logout = state => INITIAL_STATE
 

@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native'
 import App from './App'
+import './App/reactotron'
 
-AppRegistry.registerComponent('FUParking', () => App)
+new App() // eslint-disable-line
