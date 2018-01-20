@@ -13,7 +13,7 @@ class Drawer extends React.PureComponent {
 
   render () {
     return (
-      <FUPScrollView style={{ backgroundColor: 'red' }}>
+      <FUPScrollView style={styles.drawer}>
         <Button title='Logout' onPress={this.handleLogout} />
       </FUPScrollView>
     )
@@ -21,7 +21,9 @@ class Drawer extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
-
+  drawer: {
+    backgroundColor: 'white'
+  }
 })
 
 const mapStateToProps = state => ({

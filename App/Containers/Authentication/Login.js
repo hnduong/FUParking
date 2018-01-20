@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, StyleSheet, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 import FUPInput from '../../Components/FUPInput'
 import FUPScrollView from '../../Components/FUPScrollView'
@@ -9,9 +9,10 @@ import FUPComponent from '../../Components/FUPComponent'
 import { App } from '../../Theme'
 
 import UserActions from '../../Redux/User'
+import Metrics from '../../Theme/Metrics';
+import Fonts from '../../Theme/Fonts';
 
 class Login extends FUPComponent {
-
   handleLogin = () => {
     const { email, password } = this.state.inputs
     this.props.login({ UID: email, Password: password, ApplicationDetails: null })
@@ -23,8 +24,10 @@ class Login extends FUPComponent {
 
   render () {
     return (
-      <View style={styles.mainContainer}>
+      <View style={[styles.mainContainer, styles.loginContainer]}>
         <FUPScrollView scrollEnabled={false}>
+          <Text style={styles.welcomeText}>Welcome to</Text>
+          <Text style={styles.welcomeText}>Frog UTC Parking</Text>
           <View style={[styles.section, styles.inputContainer]}>
             <FUPInput
               ref={this.setRef('email')}
@@ -55,6 +58,12 @@ const styles = StyleSheet.create({
   ...App.form,
   input: {
     borderBottomWidth: 1
+  },
+  loginContainer: {
+    backgroundColor: 'red'
+  },
+  welcomeText: {
+    fontSize: Fonts.size.h5
   }
 })
 

@@ -51,7 +51,7 @@ const checkBay = ({ SID, ApplicationDetails, BayName }) =>
   api.post('/CheckBay', { SID, ApplicationDetails, BayName })
 
 /**
- * 
+ *
 {
     "Success": true,
     "Errors": [],

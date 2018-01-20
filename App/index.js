@@ -54,9 +54,7 @@ class App extends React.Component {
           drawer: {
             left: {
               screen: 'FUParking.Drawer'
-            },
-            type: 'TheSideBar',
-            animationType: 'facebook'
+            }
           }
         })
         break
