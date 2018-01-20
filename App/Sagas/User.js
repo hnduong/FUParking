@@ -13,10 +13,18 @@ function * login (authorizeApi, getUserApi, action) {
       const authorizedUser = path(['data'], authorizeResponse)
       const getUserResponse = yield call(getUserApi, { SID: authorizedUser.SID })
       if (getUserResponse.ok) {
-        AsyncStorage.setItem('FUParking_Credentials', JSON.stringify(credentials))
-        const permits = path(['data', 'Permits'], getUserResponse)
-        const vehicles = path(['data', 'Vehicles'], getUserResponse)
-        yield put(UserActions.loginSuccess({ permits, vehicles }))
+        const publicUser = path(['data'], getUserResponse)
+        const user = {
+          Permits: publicUser.Permits,
+          Vehicles: publicUser.Vehicles,
+          SID: authorizedUser.SID,
+          ExpiresOn: authorizedUser.ExpiresOn,
+          UserRoles: authorizedUser.UserRoles,
+          OrganizationId: authorizedUser.OrganizationId,
+          CallCenterPhoneNumber: publicUser.CallCenterPhoneNumber
+        }
+        AsyncStorage.multiSet([['FUParking_User', JSON.stringify(user)], ['FUParking_Credentials', JSON.stringify(credentials)]])
+        yield put(UserActions.loginSuccess(user))
         yield put(AppActions.updateRoot('authenticated'))
       }
     }
@@ -33,7 +41,18 @@ function * logout (action) {
   }
 }
 
+function * getPermit (getPermitApi, action) {
+  try {
+    const { space } = action
+
+    console.log(space)
+  } catch (error) {
+
+  }
+}
+
 export default {
   login,
-  logout
+  logout,
+  getPermit
 }

@@ -44,7 +44,33 @@ const authorize = ({ ApplicationId = config.ApplicationId, UID, Password, Applic
 const getPublicUserAccountsDetails = ({ SID, ApplicationDetails }) =>
   api.post('/GetPublicUserAccountDetails', { SID, ApplicationDetails })
 
+const getExtendedApplicationConfiguration = (ApplicationFamilyId) =>
+  api.post('/GetExtendedApplicationConfiguration', { ApplicationFamilyId })
+
+const checkBay = ({ SID, ApplicationDetails, BayName }) =>
+  api.post('/CheckBay', { SID, ApplicationDetails, BayName })
+
+/**
+ * 
+{
+    "Success": true,
+    "Errors": [],
+    "PermitDetails": {
+        "Id": "aa91edd5-125e-4802-a979-1a99b7f4518f",
+        "PermitPrefix": 100,
+        "PermitNumber": "F80847315",
+        "ExpiresOn": "/Date(1516435140000)/",
+        "Cancelled": false
+    }
+}
+*/
+const getPermit = ({ SID, ApplicationDetails, PermitPrefix, PermitNumber, UniqueName, VehicleRegistrationNumber }) =>
+  api.post('/GetPermit', { SID, ApplicationDetails, PermitPrefix, PermitNumber, UniqueName, VehicleRegistrationNumber })
+
 export default {
   authorize,
-  getPublicUserAccountsDetails
+  getPublicUserAccountsDetails,
+  getExtendedApplicationConfiguration,
+  checkBay,
+  getPermit
 }

@@ -6,14 +6,15 @@ import FUPScrollView from '../Components/FUPScrollView'
 import FUPComponent from '../Components/FUPComponent'
 import FUPInput from '../Components/FUPInput'
 
+import UserActions from '../Redux/User'
+
 import { App } from '../Theme'
 
 class Home extends FUPComponent {
-
   handleSubmit = () => {
     const { space } = this.state.inputs
     if (space) {
-
+      this.props.getPermit(space)
     }
   }
 
@@ -42,7 +43,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  getPermit: space => dispatch(UserActions.getPermitRequest(space))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
