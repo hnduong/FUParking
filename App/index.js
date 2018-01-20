@@ -55,8 +55,8 @@ class App extends React.Component {
             left: {
               screen: 'FUParking.Drawer'
             },
-            type: 'MMDrawer',
-            animationType: 'parallax'
+            type: 'TheSideBar',
+            animationType: 'facebook'
           }
         })
         break

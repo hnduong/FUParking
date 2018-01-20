@@ -13,7 +13,7 @@ class Drawer extends React.PureComponent {
 
   render () {
     return (
-      <FUPScrollView>
+      <FUPScrollView style={{ backgroundColor: 'red' }}>
         <Button title='Logout' onPress={this.handleLogout} />
       </FUPScrollView>
     )

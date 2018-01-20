@@ -36,6 +36,7 @@ function * login (authorizeApi, getUserApi, action) {
 function * logout (action) {
   try {
     yield put(AppActions.updateRoot('authentication'))
+    yield AsyncStorage.multiRemove(['FUParking_User', 'FUParking_Credentials'])
   } catch (error) {
     yield put(AppActions.updateRoot('authentication'))
   }
