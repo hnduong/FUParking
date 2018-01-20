@@ -34,7 +34,7 @@ class App extends React.Component {
       case 'authentication':
         Navigation.startSingleScreenApp({
           screen: {
-            screen: 'FUParking.Login',
+            screen: 'FUParking.Welcome',
             navigatorStyle: {
               navBarHidden: true,
               statusBarHidden: false

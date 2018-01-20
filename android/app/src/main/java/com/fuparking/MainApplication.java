@@ -3,6 +3,8 @@ package com.fuparking;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
 import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
 import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage;
@@ -32,7 +34,9 @@ public class MainApplication extends NavigationApplication {
         new ReactNativeConfigPackage(),
         new AppCenterReactNativeCrashesPackage(MainApplication.this, "ASK_JAVASCRIPT"),
         new AppCenterReactNativeAnalyticsPackage(MainApplication.this, "ENABLE_IN_JS"),
-        new AppCenterReactNativePackage(MainApplication.this)
+        new AppCenterReactNativePackage(MainApplication.this),
+        new VectorIconsPackage(),
+        new LinearGradientPackage()
     );
   }
 

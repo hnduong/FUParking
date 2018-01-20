@@ -148,6 +148,32 @@ const App = {
     borderColor: Colors.ember,
     alignItems: 'center',
     textAlign: 'center'
+  },
+  layout: {
+    flex: {
+      flex: 1
+    },
+    flexRow: {
+      flexDirection: 'row'
+    },
+    flexColumn: {
+      flexDirection: 'column'
+    },
+    alignCenter: {
+      alignItems: 'center'
+    },
+    justifyCenter: {
+      justifyContent: 'center'
+    },
+    width90: {
+      width: '90%'
+    },
+    width80: {
+      width: '80%'
+    },
+    width70: {
+      width: '70%'
+    }
   }
 }
 

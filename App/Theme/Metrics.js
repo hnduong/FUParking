@@ -10,7 +10,7 @@ const metrics = {
   smallMargin: 5,
   doubleSection: 50,
   horizontalLineHeight: 1,
-  inputHeight: 50,
+  inputHeight: 40,
   searchBarHeight: 30,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,

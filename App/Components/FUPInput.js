@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     height: Metrics.inputHeight,
     padding: Metrics.smallMargin,
     textAlign: 'left',
-    borderRadius: 3,
+    fontFamily: 'Roboto',
+    borderRadius: 0,
     borderWidth: 0,
     backgroundColor: Colors.background,
     color: Colors.text

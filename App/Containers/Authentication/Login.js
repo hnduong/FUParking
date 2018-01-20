@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, StyleSheet, Text, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import MIcon from 'react-native-vector-icons/MaterialIcons'
 
 import FUPInput from '../../Components/FUPInput'
 import FUPScrollView from '../../Components/FUPScrollView'
 import FUPComponent from '../../Components/FUPComponent'
+import FUPText from '../../Components/FUPText'
 
-import { App } from '../../Theme'
+import { App, Metrics, Fonts, Colors } from '../../Theme'
 
 import UserActions from '../../Redux/User'
-import Metrics from '../../Theme/Metrics';
-import Fonts from '../../Theme/Fonts';
 
 class Login extends FUPComponent {
   handleLogin = () => {
@@ -24,31 +25,36 @@ class Login extends FUPComponent {
 
   render () {
     return (
-      <View style={[styles.mainContainer, styles.loginContainer]}>
+      <LinearGradient colors={['#FEAC5E', '#C779D0', '#4BC0C8']} style={[styles.mainContainer]}>
         <FUPScrollView scrollEnabled={false}>
-          <Text style={styles.welcomeText}>Welcome to</Text>
-          <Text style={styles.welcomeText}>Frog UTC Parking</Text>
-          <View style={[styles.section, styles.inputContainer]}>
+          <View style={[styles.section, styles.inputContainer, styles.alignCenter, styles.width90]}>
+            <MIcon color={Colors.white} name='email' size={Metrics.icons.medium} />
             <FUPInput
               ref={this.setRef('email')}
               placeholder='Email'
+              placeholderTextColor={Colors.gray}
               style={styles.input}
               onChangeText={this.inputOnChangeText('email')}
+              onSubmitEditing={this.focusField('password')}
             />
           </View>
-          <View style={[styles.section, styles.inputContainer]}>
+          <View style={[styles.section, styles.inputContainer, styles.alignCenter, styles.width90]}>
+            <MIcon color={Colors.white} name='lock' size={Metrics.icons.medium} />
             <FUPInput
               ref={this.setRef('password')}
               secureTextEntry
               placeholder='Password'
+              placeholderTextColor={Colors.gray}
               style={styles.input}
               onChangeText={this.inputOnChangeText('password')}
+              returnKeyType='go'
+              onSubmitEditing={this.handleLogin}
             />
           </View>
           <Button title='Login' onPress={this.handleLogin} />
           <Button title='Register' onPress={this.goToRegister} />
         </FUPScrollView>
-      </View>
+      </LinearGradient>
     )
   }
 }
@@ -56,14 +62,19 @@ class Login extends FUPComponent {
 const styles = StyleSheet.create({
   ...App.screen,
   ...App.form,
+  ...App.layout,
   input: {
-    borderBottomWidth: 1
+    backgroundColor: 'transparent',
+    borderBottomWidth: 1,
+    color: Colors.gray
   },
-  loginContainer: {
-    backgroundColor: 'red'
+  linearGradient: {
+    flex: 1
   },
   welcomeText: {
-    fontSize: Fonts.size.h5
+    marginTop: Metrics.baseMargin,
+    fontSize: Fonts.size.h4,
+    color: 'white'
   }
 })
 
