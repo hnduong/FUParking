@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, StyleSheet, Image, Text, View } from 'react-native'
+import { Button, StyleSheet, Image, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import MIcon from 'react-native-vector-icons/MaterialIcons'
+
 import * as Animatable from 'react-native-animatable'
 
 import CircularText from '../../Components/CircularText'
@@ -21,13 +21,16 @@ class Welcome extends FUPComponent {
   }
 
   componentDidMount () {
-    setInterval(() => {
+    this.gradientUpdateInterval = setInterval(() => {
       this.setState({
-        count: this.state.count + 1,
         colorTop: this.incrementColor(this.state.colorTop, 1),
         colorBottom: this.incrementColor(this.state.colorBottom, -1)
       })
     }, 20)
+  }
+
+  componentWillUnmount () {
+    if (this.gradientUpdateInterval) clearInterval(this.gradientUpdateInterval)
   }
 
   goToLogin = () => {
@@ -51,7 +54,7 @@ class Welcome extends FUPComponent {
             <FUPText h4 bold center>Welcome to</FUPText>
             <FUPText h4 bold center>Frog UTC Parking</FUPText>
           </View>
-          <View>
+          <View style={styles.circular}>
             <Animatable.View direction='reverse' useNativeDriver easing='linear' duration={30000} animation='rotate' iterationCount='infinite' style={{ position: 'absolute', width: 250, height: 250, justifyContent: 'center', alignItems: 'center' }}>
               <CircularText circumference={250} text='Frogs Only*Others Will Be Toad*' textStyle={{ medium: true, bold: true }} degOffset={45} />
             </Animatable.View>
@@ -70,6 +73,9 @@ const styles = StyleSheet.create({
   ...App.screen,
   ...App.form,
   ...App.layout,
+  circular: {
+    marginVertical: Metrics.doubleBaseMargin
+  },
   linearGradient: {
     flex: 1
   },
