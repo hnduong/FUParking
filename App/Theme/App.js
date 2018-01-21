@@ -34,6 +34,9 @@ const App = {
     },
     lightButton: {
       backgroundColor: Colors.light
+    },
+    clear: {
+      backgroundColor: Colors.transparent
     }
   },
   form: {
