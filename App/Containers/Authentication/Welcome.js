@@ -15,56 +15,14 @@ const orbit = require('../../Resources/Images/orbit.png')
 
 class Welcome extends FUPComponent {
   state = {
-    animatedGradient: false,
+    animatedGradient: true,
     colorTop: '#FEAC5E',
     colorMiddle: '#C779D0',
-    colorBottom: '#4BC0C8',
-    orbitalLayout: { x: 0, y: 0, height: 0, width: 0 },
-    orbitalContainer: { x: 0, y: 0, height: 0, width: 0 },
-    frogPosition: { top: 0, left: 0 }
-  }
-
-  componentDidMount () {
-    if (this.state.animatedGradient) {
-      this.gradientUpdateInterval = setInterval(() => {
-        this.setState({
-          colorTop: this.incrementColor(this.state.colorTop, 1),
-          colorBottom: this.incrementColor(this.state.colorBottom, -1)
-        })
-      }, 20)
-    }
-  }
-
-  componentWillUnmount () {
-    if (this.gradientUpdateInterval) clearInterval(this.gradientUpdateInterval)
+    colorBottom: '#4BC0C8'
   }
 
   goToLogin = () => {
     this.navigate('FUParking.Login')
-  }
-
-  incrementColor (color, step) {
-    const intColor = parseInt(color.substr(1), 16)
-    const newIntColor = (intColor + step).toString(16)
-    return `#${'0'.repeat(6 - newIntColor.length)}${newIntColor}`
-  }
-
-  onOrbitalLayout = (e) => {
-    this.setState({ orbitalLayout: e.nativeEvent.layout })
-    const orbitalLayout = e.nativeEvent.layout
-    const { orbitalContainer } = this.state
-    this.updateFrogPosition(-3 + orbitalContainer.height / 2 + orbitalLayout.x + orbitalContainer.x, orbitalContainer.width / 2 + orbitalLayout.y)  
-  }
-
-  onOrbitalContainerLayout = (e) => {
-    this.setState({ orbitalContainer: e.nativeEvent.layout })
-    const orbitalContainer = e.nativeEvent.layout
-    const { orbitalLayout } = this.state
-    this.updateFrogPosition(-3 + orbitalContainer.height / 2 + orbitalLayout.x + orbitalContainer.x, orbitalContainer.width / 2 + orbitalLayout.y)  
-  }
-
-  updateFrogPosition = (top, left) => {
-    this.setState({ frogPosition: { top, left } })
   }
 
   render () {
@@ -73,17 +31,13 @@ class Welcome extends FUPComponent {
         colors={[this.state.colorTop, this.state.colorMiddle, this.state.colorBottom]}
         style={[styles.mainContainer]}
       >
-        <Image
-          source={require('../../../icon.png')}
-          style={{ position: 'absolute', height: 49, width: 49, left: this.state.frogPosition.left, top: this.state.frogPosition.top }}
-        />
         <Swiper
           style={styles.wrapper}
+          loop={false}
           dotStyle={styles.dot}
           activeDotStyle={styles.dot}
           activeDotColor={Colors.white}
           dotColor={Colors.charcoal}
-          on
         >
           <View style={styles.slide1}>
             <FUPScrollView scrollEnabled={false}>
@@ -91,12 +45,12 @@ class Welcome extends FUPComponent {
                 <FUPText h4 bold center>Welcome to</FUPText>
                 <FUPText h4 bold center>Frog UTC Parking</FUPText>
               </View>
-              <View onLayout={this.onOrbitalContainerLayout} style={styles.circular}>
+              <View style={styles.circular}>
                 <Animatable.View direction='reverse' useNativeDriver easing='linear' duration={30000} animation='rotate' iterationCount='infinite' style={{ position: 'absolute', width: 250, height: 250, justifyContent: 'center', alignItems: 'center' }}>
                   <CircularText circumference={250} text='Frogs Only*Others Will Be Toad*' textStyle={{ medium: true, bold: true }} degOffset={45} />
                 </Animatable.View>
                 <Animatable.View useNativeDriver easing='linear' duration={60000} animation='rotate' iterationCount='infinite' style={{ width: 250, height: 250, justifyContent: 'center', alignItems: 'center' }}>
-                  <Image onLayout={this.onOrbitalLayout} resizeMode='contain' source={orbit} style={styles.orbit} />
+                  <Image resizeMode='contain' source={orbit} style={styles.orbit} />
                 </Animatable.View>
               </View>
               <View style={styles.descriptionContainer}>
@@ -172,7 +126,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   }
 })
 
