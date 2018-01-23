@@ -1,5 +1,6 @@
-import { put } from 'redux-saga/effects'
+import { put, fork } from 'redux-saga/effects'
 import { AsyncStorage } from 'react-native'
+import Analytics from 'appcenter-analytics'
 
 import AppActions from '../Redux/App'
 import UserActions from '../Redux/User'
@@ -19,7 +20,21 @@ function * startup (authorizeApi, getUserApi, action) {
     } else {
       yield put(UserActions.loginRequest(credentials))
     }
+    const analyticsEnabled = yield Analytics.isEnabled()
+    yield put(AppActions.updateIsAnalyticsEnabled(analyticsEnabled))
+    if (analyticsEnabled) {
+      yield put({ type: 'TRACK_EVENT', name: 'Opened App' })
+    } else {
+      yield Analytics.setEnabled(true)
+    }
   } catch (error) {
+    const analyticsEnabled = yield Analytics.isEnabled()
+    yield put(AppActions.updateIsAnalyticsEnabled(analyticsEnabled))
+    if (analyticsEnabled) {
+      yield put({ type: 'TRACK_EVENT', name: 'Opened App' })
+    } else {
+      yield Analytics.setEnabled(true)
+    }
     yield put(AppActions.updateRoot('authentication'))
   }
 }

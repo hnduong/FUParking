@@ -14,10 +14,6 @@ import { App, Metrics, Fonts, Colors } from '../../Theme'
 import UserActions from '../../Redux/User'
 
 class Login extends FUPComponent {
-  static navigatorStyle = {
-    statusBarHidden: false,
-    navBarHidden: true
-  }
 
   handleLogin = () => {
     const { email, password } = this.state.inputs

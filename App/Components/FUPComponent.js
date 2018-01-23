@@ -1,9 +1,14 @@
 import React from 'react'
 
 class FUPComponent extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
+  static navigatorStyle = {
+    statusBarHidden: false,
+    drawUnderNavBar: true,
+    navBarTranslucent: true,
+    navBarTransparent: true,
+    navBarBackgroundColor: 'transparent',
+    topBarElevationShadowEnabled: false
+  }
 
   state = {
     inputs: {}

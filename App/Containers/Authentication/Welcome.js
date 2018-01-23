@@ -9,6 +9,8 @@ import CircularText from '../../Components/CircularText'
 import FUPScrollView from '../../Components/FUPScrollView'
 import FUPComponent from '../../Components/FUPComponent'
 import FUPText from '../../Components/FUPText'
+import FUPButton from '../../Components/FUPButton'
+
 import { App, Metrics, Colors } from '../../Theme'
 
 const orbit = require('../../Resources/Images/orbit.png')
@@ -73,9 +75,12 @@ class Welcome extends FUPComponent {
             </FUPScrollView>
           </View>
         </Swiper>
-        <TouchableOpacity style={styles.loginButtonContainer} onPress={this.goToLogin}>
-          <FUPText center h6>Login</FUPText>
-        </TouchableOpacity>
+        <FUPButton
+          style={styles.loginButtonContainer}
+          textStyle={{ color: Colors.white, center: true }}
+          text='Login'
+          onPress={this.goToLogin}
+        />
       </LinearGradient>
     )
   }
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     left: 0,
     right: 0,
-    margin: Metrics.baseMargin
+    paddingVertical: 10
   },
   orbit: {
     width: 200,

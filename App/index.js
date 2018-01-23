@@ -14,7 +14,6 @@ const getRoot = state => state.App.get('root')
 class App extends React.Component {
   constructor (props) {
     super(props)
-    store.dispatch({ type: 'TRACK_EVENT', name: 'Opened App' })
     store.subscribe(this.onStoreUpdate.bind(this))
     store.dispatch({ type: 'STARTUP' })
   }
