@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import MIcon from 'react-native-vector-icons/MaterialIcons'
+// import MIcon from 'react-native-vector-icons'
+
 
 import FUPInput from '../../Components/FUPInput'
 import FUPScrollView from '../../Components/FUPScrollView'
@@ -29,7 +30,7 @@ class Login extends FUPComponent {
       <LinearGradient colors={['#FEAC5E', '#C779D0', '#4BC0C8']} style={[styles.mainContainer]}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <View style={[styles.section, styles.inputContainer, styles.alignCenter, styles.width90]}>
-            <MIcon color={Colors.white} name='email' size={Metrics.icons.medium} style={styles.clear} />
+            {/* <MIcon color={Colors.white} name='email' size={Metrics.icons.medium} style={styles.clear} /> */}
             <FUPInput
               ref={this.setRef('email')}
               placeholder='Email'
@@ -40,7 +41,7 @@ class Login extends FUPComponent {
             />
           </View>
           <View style={[styles.section, styles.inputContainer, styles.alignCenter, styles.width90]}>
-            <MIcon color={Colors.white} name='lock' size={Metrics.icons.medium} style={styles.clear} />
+            {/* <MIcon color={Colors.white} name='lock' size={Metrics.icons.medium} style={styles.clear} /> */}
             <FUPInput
               ref={this.setRef('password')}
               secureTextEntry

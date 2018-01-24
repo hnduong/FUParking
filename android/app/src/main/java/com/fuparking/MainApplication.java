@@ -3,6 +3,7 @@ package com.fuparking;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
@@ -36,7 +37,8 @@ public class MainApplication extends NavigationApplication {
         new AppCenterReactNativeAnalyticsPackage(MainApplication.this, "ENABLE_IN_JS"),
         new AppCenterReactNativePackage(MainApplication.this),
         new VectorIconsPackage(),
-        new LinearGradientPackage()
+        new LinearGradientPackage(),
+        new LottiePackage()
     );
   }
 

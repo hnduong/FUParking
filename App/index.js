@@ -44,11 +44,7 @@ class App extends React.Component {
       case 'authenticated':
         Navigation.startSingleScreenApp({
           screen: {
-            screen: 'FUParking.Home',
-            navigatorStyle: {
-              navBarHidden: true,
-              statusBarHidden: false
-            }
+            screen: 'FUParking.Home'
           },
           drawer: {
             left: {
