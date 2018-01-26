@@ -30,44 +30,25 @@ class Home extends FUPComponent {
   constructor (props) {
     super(props)
     this.state = {
-      permit: 0,
-      recording: false
+      ...this.state,
+      permit: 0
     }
-    Voice.onSpeechStart = this.onSpeechStartHandler
-    Voice.onSpeechEnd = this.onSpeechEndHandler
-    Voice.onSpeechResults = this.onSpeechResultsHandler
   }
 
   handleSubmit = () => {
     const { space } = this.state.inputs
     if (space) {
-      this.props.getPermit(space)
+      const permits = Immutable.toJS(this.props.user.get('Permits'))
+      const permit = permits[0]
+      const vehicles = Immutable.toJS(this.props.user.get('Vehicles'))
+      const vehicle = vehicles[0]
+      this.props.getPermit(space, permit, vehicle.LicensePlate)
     }
   }
 
   handleSelectedPermit = (itemValue, itemIndex) => {
     const permit = this.props.user.get('Permits').toJS()[itemIndex]
     this.setState({ permit })
-  }
-
-  voiceStart = () => {
-    Voice.start('en-US')
-  }
-
-  voiceStop = () => {
-    Voice.stop()
-  }
-
-  onSpeechStartHandler = (event) => {
-    this.setState({ recording: true })
-  }
-
-  onSpeechResultsHandler = (event) => {
-    console.log(event.value[0])
-  }
-
-  onSpeechEndHandler = (event) => {
-    this.setState({ recording: false })
   }
 
   render () {
@@ -78,8 +59,9 @@ class Home extends FUPComponent {
             <FUPInput
               placeholder='Space'
               onChangeText={this.inputOnChangeText('space')}
+              maxLength={4}
+              autoCapitalize='characters'
             />
-            <Button title={this.state.recording ? 'Stop' : 'Speak'} onPress={this.state.recording ? this.voiceStop : this.voiceStart} />
           </View>
           <View style={[styles.section]}>
             <Picker
@@ -110,7 +92,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getPermit: space => dispatch(UserActions.getPermitRequest(space))
+  getPermit: (space, permit, licensePlate) => dispatch(UserActions.getPermitRequest(space, permit, licensePlate))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

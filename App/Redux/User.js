@@ -10,7 +10,7 @@ const { Types, Creators } = createActions({
 
   logout: [],
 
-  getPermitRequest: ['space'],
+  getPermitRequest: ['space', 'permit', 'vehicle'],
   getPermitFailure: ['error'],
   getPermitSuccess: ['permit']
 })
@@ -33,6 +33,9 @@ export const loginSuccess = (state, { user }) =>
 export const getPermitSuccess = (state, { permit }) =>
   state.merge({ permit })
 
+export const updatePermit = (state, { permit }) =>
+  state.merge({ permit })
+
 export const logout = state => INITIAL_STATE
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -41,6 +44,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_SUCCESS]: loginSuccess,
   [Types.LOGOUT]: logout,
 
-  [Types.GET_PERMIT_SUCCESS]: getPermitSuccess
+  [Types.GET_PERMIT_SUCCESS]: getPermitSuccess,
+  [Types.UPDATE_PERMIT]: updatePermit
 
 })
