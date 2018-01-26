@@ -11,5 +11,5 @@ export default (store, Provider) => {
   Navigation.registerComponent('FUParking.Register', () => Register, store, Provider)
   Navigation.registerComponent('FUParking.Home', () => Home, store, Provider)
   Navigation.registerComponent('FUParking.Drawer', () => Drawer, store, Provider)
-  Navigation.registerComponent('FUParking.MenuButton', () => MenuButton)
+  Navigation.registerComponent('FUParking.MenuButton', () => MenuButton, store, Provider)
 }

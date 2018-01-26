@@ -15,7 +15,7 @@ export default function * root () {
     takeLatest(UserTypes.LOGIN_REQUEST, UserSagas.login, FrogParkingApi.authorize, FrogParkingApi.getPublicUserAccountsDetails),
     takeLatest(UserTypes.LOGOUT, UserSagas.logout),
 
-    takeLatest(UserTypes.GET_PERMIT_REQUEST, UserSagas.getPermit, FrogParkingApi.getPermit)
+    takeLatest(UserTypes.GET_PERMIT_REQUEST, UserSagas.getPermit, FrogParkingApi.checkBay, FrogParkingApi.getPermit, FrogParkingApi.applyPermit)
 
   ])
 }

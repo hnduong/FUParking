@@ -67,10 +67,26 @@ const checkBay = ({ SID, ApplicationDetails, BayName }) =>
 const getPermit = ({ SID, ApplicationDetails, PermitPrefix, PermitNumber, UniqueName, VehicleRegistrationNumber }) =>
   api.post('/GetPermit', { SID, ApplicationDetails, PermitPrefix, PermitNumber, UniqueName, VehicleRegistrationNumber })
 
+/**
+{
+"SID": "WqFJmMgAMQeEm_PGLjNvdOrNEO3HP4Nt1jpI500lfmtQYQbbCYXqXDNWNeWZtEfsUeIecDN48OhHTFumTga1IA",
+"ApplicationDetails": "null",
+"PermitPrefix": "100",
+"PermitNumber": "F80847315",
+"Email": "hai@theportal.io",
+"BayName": "C387",
+"VehicleRegistrationNumber": "6FVT378"
+}
+ * @param {*} param
+ */
+const applyPermit = ({ SID, PermitPrefix, PermitNumber, Email, BayName, VehicleRegistrationNumber, ApplicationDetails }) =>
+  api.post('/ApplyPermitToBay', { SID, PermitPrefix, PermitNumber, Email, BayName, VehicleRegistrationNumber, ApplicationDetails })
+
 export default {
   authorize,
   getPublicUserAccountsDetails,
   getExtendedApplicationConfiguration,
   checkBay,
-  getPermit
+  getPermit,
+  applyPermit
 }

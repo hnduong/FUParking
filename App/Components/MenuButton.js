@@ -1,30 +1,26 @@
 import React from 'react'
 import Lottie from 'lottie-react-native'
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 
 const menuJSON = require('../Resources/Lottie/menu.json')
 
 class MenuButton extends React.Component {
-  componentDidMount () {
-    
-  }
-
   handleOnPress = () => {
     this.animation.play()
   }
   render () {
     return (
       <TouchableOpacity
-        style={[styles.button, { borderWidth: 1 }]}
+        style={[styles.button]}
         onPress={this.handleOnPress}
       >
         <Lottie
-          style={styles.button}
-          ref={animation => {
-            this.animation = animation
-          }}
+          style={[StyleSheet.absoluteFill]}
+          ref={animation => { this.animation = animation }}
           source={menuJSON}
           loop={false}
+          speed={2}
+          enableMergePathsAndroidForKitKatAndAbove
         />
       </TouchableOpacity>
     )

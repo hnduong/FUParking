@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, StyleSheet, Image, View, TouchableOpacity } from 'react-native'
+import ReactNative, { Animated, StyleSheet, Image, View, NativeModules, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import Swiper from 'react-native-swiper'
 import * as Animatable from 'react-native-animatable'
+import Lottie from 'lottie-react-native'
 
 import CircularText from '../../Components/CircularText'
 import FUPScrollView from '../../Components/FUPScrollView'
@@ -13,6 +13,8 @@ import FUPButton from '../../Components/FUPButton'
 
 import { App, Metrics, Colors } from '../../Theme'
 
+const { ScrollViewManager } = NativeModules
+
 const orbit = require('../../Resources/Images/orbit.png')
 
 class Welcome extends FUPComponent {
@@ -20,11 +22,33 @@ class Welcome extends FUPComponent {
     animatedGradient: true,
     colorTop: '#FEAC5E',
     colorMiddle: '#C779D0',
-    colorBottom: '#4BC0C8'
+    colorBottom: '#4BC0C8',
+    progress: new Animated.Value(0),
+    pageWidth: 0,
+    maxWidth: 0,
+    currentWidth: 0,
+    numPages: 0
   }
 
   goToLogin = () => {
     this.navigate('FUParking.Login')
+  }
+
+  onLayout = (event) => {
+    const pageWidth = event.nativeEvent.layout.width
+    if (ScrollViewManager && ScrollViewManager.getContentSize) {
+      ScrollViewManager.getContentSize(ReactNative.findNodeHandle(this.scrollView), (contentSize) => {
+        const maxWidth = contentSize.width
+        this.setState({ pageWidth, maxWidth, numPages: maxWidth / pageWidth })
+      })
+    }
+  }
+
+  onScroll = (event) => {
+    const { contentOffset, contentSize } = event.nativeEvent
+    let progress = (contentOffset.x / contentSize.width) * (4 / 3)
+    if (progress < 0) progress = 0
+    this.setState({ progress })
   }
 
   render () {
@@ -33,15 +57,15 @@ class Welcome extends FUPComponent {
         colors={[this.state.colorTop, this.state.colorMiddle, this.state.colorBottom]}
         style={[styles.mainContainer]}
       >
-        <Swiper
-          style={styles.wrapper}
-          loop={false}
-          dotStyle={styles.dot}
-          activeDotStyle={styles.dot}
-          activeDotColor={Colors.white}
-          dotColor={Colors.charcoal}
+        <ScrollView
+          ref={this.setRef('scrollView')}
+          horizontal
+          onScroll={this.onScroll}
+          pagingEnabled
+          scrollEventThrottle={1}
+          onLayout={this.onLayout}
         >
-          <View style={styles.slide1}>
+          <View style={styles.slide}>
             <FUPScrollView scrollEnabled={false}>
               <View style={styles.welcomeTextContainer}>
                 <FUPText h4 bold center>Welcome to</FUPText>
@@ -60,21 +84,12 @@ class Welcome extends FUPComponent {
               </View>
             </FUPScrollView>
           </View>
-          <View style={styles.slide2}>
+          <View style={styles.slide}>
             <FUPScrollView scrollEnabled={false}>
-              <View style={styles.descriptionContainer}>
-                <FUPText center h6>With focus on aethetics and usability</FUPText>
-              </View>
+
             </FUPScrollView>
           </View>
-          <View style={styles.slide3}>
-            <FUPScrollView scrollEnabled={false}>
-              <View style={styles.descriptionContainer}>
-                <FUPText center h6>You'll save time</FUPText>
-              </View>
-            </FUPScrollView>
-          </View>
-        </Swiper>
+        </ScrollView>
         <FUPButton
           style={styles.loginButtonContainer}
           textStyle={{ color: Colors.white, center: true }}
@@ -119,14 +134,9 @@ const styles = StyleSheet.create({
   },
   wrapper: {
   },
-  slide1: {
-    flex: 1
-  },
-  slide2: {
-    flex: 1
-  },
-  slide3: {
-    flex: 1
+  slide: {
+    width: Metrics.screenWidth,
+    height: Metrics.screenWidth
   },
   text: {
     color: '#fff',

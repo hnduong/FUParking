@@ -23,13 +23,6 @@ class Home extends FUPComponent {
         id: '22',
         showAsAction: 'always'
       }
-    ],
-    rightButtons: [
-      {
-        component: 'FUParking.MenuButton',
-        id: 'menu',
-        showAsAction: 'always'
-      }
     ]
   };
 

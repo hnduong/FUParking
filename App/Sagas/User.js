@@ -1,7 +1,9 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, select } from 'redux-saga/effects'
 import { path } from 'ramda'
 import { AsyncStorage } from 'react-native'
+import Immutable from 'immutable'
 
+import Selectors from '../Utils/Selectors'
 import UserActions from '../Redux/User'
 import AppActions from '../Redux/App'
 
@@ -42,11 +44,11 @@ function * logout (action) {
   }
 }
 
-function * getPermit (getPermitApi, action) {
+function * getPermit (checkBayApi, getPermitApi, applyPermitApi, action) {
   try {
     const { space } = action
-
-    console.log(space)
+    const state = yield select(Selectors.getState)
+    console.log(Immutable.toJS(state.App))
   } catch (error) {
 
   }
