@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, StyleSheet, View, Picker } from 'react-native'
+import { Button, StyleSheet, View, Picker, TouchableOpacity } from 'react-native'
 import Immutable from 'immutable'
-import { ButtonGroup } from 'react-native-elements'
+import { ButtonGroup, Card, Icon } from 'react-native-elements'
 
 import { FUPScrollView, FUPInput, FUPComponent, FUPText } from '../Components'
 
@@ -29,19 +29,28 @@ class Home extends FUPComponent {
     super(props)
     this.state = {
       ...this.state,
-      permit: 0,
-      groupIndex: 1
+      groupIndex: 1,
+      selectedRecentIndex: 0
     }
   }
 
   handleSubmit = () => {
-    const { space } = this.state.inputs
-    if (space) {
-      const permits = Immutable.toJS(this.props.user.get('Permits'))
-      const permit = permits[0]
-      const vehicles = Immutable.toJS(this.props.user.get('Vehicles'))
-      const vehicle = vehicles[0]
-      this.props.getPermit(space, permit, vehicle.LicensePlate)
+    const { groupIndex } = this.state
+    switch (groupIndex) {
+      case 0:
+        break
+      case 1:
+        break
+      case 2:
+        const { space } = this.state.inputs
+        if (space) {
+          const permits = Immutable.toJS(this.props.user.get('Permits'))
+          const permit = permits[0]
+          const vehicles = Immutable.toJS(this.props.user.get('Vehicles'))
+          const vehicle = vehicles[0]
+          this.props.getPermit(space, permit, vehicle.LicensePlate)
+        }
+        break
     }
   }
 
@@ -62,8 +71,10 @@ class Home extends FUPComponent {
     return (
       <View style={[styles.section]}>
         <FUPInput
+          ref={this.setRef('Input')}
           style={{ textAlign: 'center', paddingLeft: 0, borderWidth: 1 }}
           placeholder='Space'
+          autoCapitalize='characters'
           onChangeText={this.inputOnChangeText('space')}
         />
       </View>
@@ -74,19 +85,38 @@ class Home extends FUPComponent {
     return (
       <View style={[styles.section]}>
         <FUPInput
+          ref={this.setRef('favoriteInput')}
           style={{ textAlign: 'center', paddingLeft: 0, borderWidth: 1 }}
           placeholder='Space'
           value='C387'
-          onChangeText={this.inputOnChangeText('space')}
         />
       </View>
     )
   }
 
+  updateSelectedRecentIndex = (index) => () => {
+    this.setState({ selectedRecentIndex: index })
+  }
+
+  renderRecentSpace = (space, index) => {
+    const isSelected = this.state.selectedRecentIndex === index
+    return (
+      <TouchableOpacity key={space} onPress={this.updateSelectedRecentIndex(index)}>
+        <Card>
+          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+            <FUPText light h6>{space}</FUPText>
+            {isSelected && <Icon name='check' />}
+          </View>
+        </Card>
+      </TouchableOpacity>
+    )
+  }
+
   renderRecent = () => {
+    const { recent } = this.props
     return (
       <View style={[styles.section]}>
-        <FUPText light h1>fdsf</FUPText>
+        {recent.map(this.renderRecentSpace)}
       </View>
     )
   }
@@ -129,7 +159,8 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => ({
-  user: state.User.get('user')
+  user: state.User.get('user'),
+  recent: state.User.get('recent')
 })
 
 const mapDispatchToProps = dispatch => ({

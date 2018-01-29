@@ -14,7 +14,8 @@ const { Types, Creators } = createActions({
   getPermitFailure: ['error'],
   getPermitSuccess: ['permit'],
 
-  updatePermit: ['permit']
+  updatePermit: ['permit'],
+  updateRecent: ['recent']
 })
 
 export const UserTypes = Types
@@ -23,7 +24,8 @@ export default Creators
 
 export const INITIAL_STATE = fromJS({
   user: null,
-  permit: null
+  permit: null,
+  recent: []
 })
 
 export const updateUser = (state, { user }) =>
@@ -38,6 +40,9 @@ export const getPermitSuccess = (state, { permit }) =>
 export const updatePermit = (state, { permit }) =>
   state.merge({ permit })
 
+export const updateRecent = (state, { recent }) =>
+  state.merge({ recent })
+
 export const logout = state => INITIAL_STATE
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -47,6 +52,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGOUT]: logout,
 
   [Types.GET_PERMIT_SUCCESS]: getPermitSuccess,
-  [Types.UPDATE_PERMIT]: updatePermit
-
+  [Types.UPDATE_PERMIT]: updatePermit,
+  [Types.UPDATE_RECENT]: updateRecent
 })

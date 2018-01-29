@@ -9,16 +9,18 @@ import Config from '../config'
 
 function * startup (authorizeApi, getUserApi, action) {
   try {
-    const [rawCredentials, rawUser, rawPermit] = yield AsyncStorage.multiGet(['FUParking_Credentials', 'FUParking_User', 'FUParking_Permit'])
+    const [rawCredentials, rawUser, rawPermit, rawRecent] = yield AsyncStorage.multiGet([Config.storageKeys.Credentials, Config.storageKeys.User, Config.storageKeys.Permit, Config.storageKeys.Recent])
     const credentials = JSON.parse(rawCredentials[1])
     const user = JSON.parse(rawUser[1])
     const permit = JSON.parse(rawPermit[1])
+    const recent = JSON.parse(rawRecent[1])
     const expires = user.ExpiresOn.match(/\d/g).join('')
     const isExpired = new Date() > new Date(expires - Config.expirationBuffer)
     if (!isExpired) {
       yield put(UserActions.updateUser({ ...user, ...credentials }))
-      yield put(UserActions.updatePermit(permit))
-      yield put(AppActions.updateRoot('authenticated'))
+      if (permit) yield put(UserActions.updatePermit(permit))
+      if (Array.isArray(recent)) yield put(UserActions.updateRecent(recent))
+      yield put(AppActions.updateRoot(Config.root.Authenticated))
     } else {
       yield put(UserActions.loginRequest(credentials))
     }
@@ -37,7 +39,7 @@ function * startup (authorizeApi, getUserApi, action) {
     } else {
       yield Analytics.setEnabled(true)
     }
-    yield put(AppActions.updateRoot('authentication'))
+    yield put(AppActions.updateRoot(Config.root.Authentication))
   }
 }
 

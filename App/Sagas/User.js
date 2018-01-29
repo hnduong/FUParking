@@ -92,7 +92,11 @@ function * getPermit (checkBayApi, getPermitApi, applyPermitApi, action) {
           if (applyPermitResponse.ok) {
             const permit = getPermitResponse.data.PermitDetails
             yield put(UserActions.getPermitSuccess(permit))
+            let RecentlyParkedSpaces = yield AsyncStorage.getItem(Config.storageKeys.Recent)
+            if (!Array.isArray(RecentlyParkedSpaces)) RecentlyParkedSpaces = []
+            RecentlyParkedSpaces.unshift(BayName)
             AsyncStorage.setItem(Config.storageKeys.Permit, JSON.stringify(permit))
+            AsyncStorage.setItem(Config.storageKeys.Recent, JSON.stringify(RecentlyParkedSpaces.slice(0, 5)))
           }
         }
       }

@@ -7,7 +7,8 @@ const expirationBuffer = 3600
 const storageKeys = {
   User: 'FUParking_User',
   Credentials: 'FUParking_Credentials',
-  Permit: 'FUParking_Permit'
+  Permit: 'FUParking_Permit',
+  Recent: 'FUParking_Recent'
 }
 
 const root = {
