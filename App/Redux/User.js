@@ -12,7 +12,9 @@ const { Types, Creators } = createActions({
 
   getPermitRequest: ['space', 'permit', 'vehicle'],
   getPermitFailure: ['error'],
-  getPermitSuccess: ['permit']
+  getPermitSuccess: ['permit'],
+
+  updatePermit: ['permit']
 })
 
 export const UserTypes = Types

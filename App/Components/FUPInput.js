@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 
-import { Colors, Metrics } from '../Theme'
+import { Colors, Metrics, Fonts } from '../Theme'
 
 const styles = StyleSheet.create({
   textInput: {
@@ -13,14 +13,15 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderWidth: 0,
     backgroundColor: Colors.background,
-    color: Colors.text
+    color: Colors.text,
+    fontSize: Fonts.size.input
   }
 })
 
 class FUPInput extends React.Component {
   static defaultProps = {
     placeholder: 'Placeholder',
-    placeholderTextColor: Colors.dark,
+    placeholderTextColor: Colors.coolGrey,
     underlineColorAndroid: 'transparent',
     autoCapitalize: 'none',
     returnKeyType: 'next',

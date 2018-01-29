@@ -16,10 +16,11 @@ function * startup (authorizeApi, getUserApi, action) {
     const expires = user.ExpiresOn.match(/\d/g).join('')
     const isExpired = new Date() > new Date(expires - Config.expirationBuffer)
     if (!isExpired) {
-      yield put(UserActions.loginSuccess({ ...user, ...credentials, Permit: permit }))
+      yield put(UserActions.updateUser({ ...user, ...credentials }))
+      yield put(UserActions.updatePermit(permit))
       yield put(AppActions.updateRoot('authenticated'))
     } else {
-      yield put(UserActions.loginRequest({ ...user, ...credentials, Permit: permit }))
+      yield put(UserActions.loginRequest(credentials))
     }
     const analyticsEnabled = yield Analytics.isEnabled()
     yield put(AppActions.updateIsAnalyticsEnabled(analyticsEnabled))

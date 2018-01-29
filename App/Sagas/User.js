@@ -7,6 +7,8 @@ import Selectors from '../Utils/Selectors'
 import UserActions from '../Redux/User'
 import AppActions from '../Redux/App'
 
+import Config from '../config'
+
 function * login (authorizeApi, getUserApi, action) {
   try {
     const { credentials } = action
@@ -25,22 +27,29 @@ function * login (authorizeApi, getUserApi, action) {
           OrganizationId: authorizedUser.OrganizationId,
           CallCenterPhoneNumber: publicUser.CallCenterPhoneNumber
         }
-        AsyncStorage.multiSet([['FUParking_User', JSON.stringify(user)], ['FUParking_Credentials', JSON.stringify(credentials)]])
+        AsyncStorage.multiSet([
+          [Config.storageKeys.User, JSON.stringify(user)],
+          [Config.storageKeys.Credentials, JSON.stringify(credentials)]
+        ])
         yield put(UserActions.loginSuccess(user))
-        yield put(AppActions.updateRoot('authenticated'))
+        yield put(AppActions.updateRoot(Config.root.Authenticated))
       }
     }
   } catch (error) {
-    yield put(AppActions.updateRoot('authentication'))
+    yield put(AppActions.updateRoot(Config.root.Authentication))
   }
 }
 
 function * logout (action) {
   try {
-    yield put(AppActions.updateRoot('authentication'))
-    yield AsyncStorage.multiRemove(['FUParking_User', 'FUParking_Credentials', 'FUParking_Permit'])
+    yield put(AppActions.updateRoot(Config.root.Authentication))
+    yield AsyncStorage.multiRemove([
+      Config.storageKeys.User,
+      Config.storageKeys.Credentials,
+      Config.storageKeys.Permit
+    ])
   } catch (error) {
-    yield put(AppActions.updateRoot('authentication'))
+    yield put(AppActions.updateRoot(Config.root.Authentication))
   }
 }
 
@@ -83,7 +92,7 @@ function * getPermit (checkBayApi, getPermitApi, applyPermitApi, action) {
           if (applyPermitResponse.ok) {
             const permit = getPermitResponse.data.PermitDetails
             yield put(UserActions.getPermitSuccess(permit))
-            AsyncStorage.setItem('FUParking_Permit', JSON.stringify(permit))
+            AsyncStorage.setItem(Config.storageKeys.Permit, JSON.stringify(permit))
           }
         }
       }
