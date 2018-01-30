@@ -1,21 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ReactNative, { Animated, StyleSheet, Image, View, NativeModules, ScrollView } from 'react-native'
+import ReactNative, { Animated, Easing, StyleSheet, Image, View, NativeModules, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import * as Animatable from 'react-native-animatable'
-import Lottie from 'lottie-react-native'
+import LottieView from 'lottie-react-native'
 
-import CircularText from '../../Components/CircularText'
-import FUPScrollView from '../../Components/FUPScrollView'
-import FUPComponent from '../../Components/FUPComponent'
-import FUPText from '../../Components/FUPText'
-import FUPButton from '../../Components/FUPButton'
+import { CircularText, FUPScrollView, FUPComponent, FUPText, FUPButton } from '../../Components'
 
 import { App, Metrics, Colors } from '../../Theme'
 
 const { ScrollViewManager } = NativeModules
 
-const orbit = require('../../Resources/Images/orbit.png')
+const orbit = require('../../Resources/Lottie/orbit.json')
 
 class Welcome extends FUPComponent {
   state = {
@@ -23,11 +19,29 @@ class Welcome extends FUPComponent {
     colorTop: '#FEAC5E',
     colorMiddle: '#C779D0',
     colorBottom: '#4BC0C8',
-    progress: new Animated.Value(0),
+    orbitProgress: new Animated.Value(0.2),
     pageWidth: 0,
     maxWidth: 0,
     currentWidth: 0,
     numPages: 0
+  }
+
+  componentDidMount () {
+    this.animateForward()
+  }
+
+  animateForward = () => {
+    Animated.timing(this.state.orbitProgress, {
+      duration: 3000,
+      toValue: 0.75
+    }).start(() => this.animateBack())
+  }
+
+  animateBack = () => {
+    Animated.timing(this.state.orbitProgress, {
+      duration: 5000,
+      toValue: 0.2
+    }).start(() => this.animateForward())
   }
 
   goToLogin = () => {
@@ -44,13 +58,6 @@ class Welcome extends FUPComponent {
     }
   }
 
-  onScroll = (event) => {
-    const { contentOffset, contentSize } = event.nativeEvent
-    let progress = (contentOffset.x / contentSize.width) * (4 / 3)
-    if (progress < 0) progress = 0
-    this.setState({ progress })
-  }
-
   render () {
     return (
       <LinearGradient
@@ -60,33 +67,51 @@ class Welcome extends FUPComponent {
         <ScrollView
           ref={this.setRef('scrollView')}
           horizontal
-          onScroll={this.onScroll}
           pagingEnabled
-          scrollEventThrottle={1}
           onLayout={this.onLayout}
         >
           <View style={styles.slide}>
-            <FUPScrollView scrollEnabled={false}>
+            <FUPScrollView scrollEnabled={false} >
               <View style={styles.welcomeTextContainer}>
                 <FUPText h4 bold center>Welcome to</FUPText>
                 <FUPText h4 bold center>Frog UTC Parking</FUPText>
               </View>
               <View style={styles.circular}>
-                <Animatable.View direction='reverse' useNativeDriver easing='linear' duration={30000} animation='rotate' iterationCount='infinite' style={{ position: 'absolute', width: 250, height: 250, justifyContent: 'center', alignItems: 'center' }}>
-                  <CircularText circumference={250} text='Frogs Only*Others Will Be Toad*' textStyle={{ medium: true, bold: true }} degOffset={45} />
+                <Animatable.View direction='reverse' useNativeDriver easing='linear' duration={30000} animation='rotate' iterationCount='infinite' style={styles.circularTextContainer}>
+                  <CircularText circumference={250} text='UTC Frogs Only*Others Will Be Toad*' textStyle={{ medium: true, bold: true }} degOffset={45} />
                 </Animatable.View>
-                <Animatable.View useNativeDriver easing='linear' duration={60000} animation='rotate' iterationCount='infinite' style={{ width: 250, height: 250, justifyContent: 'center', alignItems: 'center' }}>
-                  <Image resizeMode='contain' source={orbit} style={styles.orbit} />
+                <Animatable.View useNativeDriver easing='linear' duration={10000} animation='rotate' iterationCount='infinite' style={styles.orbitContainer}>
+                  <LottieView
+                    progress={this.state.orbitProgress}
+                    style={StyleSheet.absoluteFill}
+                    source={orbit}
+                  />
                 </Animatable.View>
               </View>
               <View style={styles.descriptionContainer}>
-                <FUPText center h6>An alternative to the parking application provided by University Towers</FUPText>
+                <FUPText dark center h6>An alternative to the parking application provided by University Towers</FUPText>
               </View>
             </FUPScrollView>
           </View>
           <View style={styles.slide}>
-            <FUPScrollView scrollEnabled={false}>
-
+            <FUPScrollView scrollEnabled={false} contentContainerStyle={{ flexGrow: 1 }}>
+              <View style={styles.centeredView}>
+                <FUPText dark center h6>An alternative to the parking application provided by University Towers</FUPText>
+              </View>
+            </FUPScrollView>
+          </View>
+          <View style={styles.slide}>
+            <FUPScrollView scrollEnabled={false} contentContainerStyle={{ flexGrow: 1 }}>
+              <View style={styles.centeredView}>
+                <FUPText dark center h6>An alternative to the parking application provided by University Towers</FUPText>
+              </View>
+            </FUPScrollView>
+          </View>
+          <View style={styles.slide}>
+            <FUPScrollView scrollEnabled={false} contentContainerStyle={{ flexGrow: 1 }}>
+              <View style={styles.centeredView}>
+                <FUPText dark center h6>An alternative to the parking application provided by University Towers</FUPText>
+              </View>
             </FUPScrollView>
           </View>
         </ScrollView>
@@ -105,8 +130,21 @@ const styles = StyleSheet.create({
   ...App.screen,
   ...App.form,
   ...App.layout,
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
+  },
   circular: {
     marginVertical: Metrics.doubleBaseMargin
+  },
+  circularTextContainer: {
+    position: 'absolute',
+    width: 250,
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   descriptionContainer: {
     width: '90%'
@@ -129,6 +167,12 @@ const styles = StyleSheet.create({
     width: 200,
     height: 176.66
   },
+  orbitContainer: {
+    width: 250,
+    height: 250,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   welcomeTextContainer: {
     marginTop: Metrics.doubleBaseMargin
   },
@@ -136,7 +180,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     width: Metrics.screenWidth,
-    height: Metrics.screenWidth
+    height: Metrics.screenHeight
   },
   text: {
     color: '#fff',

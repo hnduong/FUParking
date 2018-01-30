@@ -19,6 +19,7 @@ function * login (authorizeApi, getUserApi, action) {
       if (getUserResponse.ok) {
         const publicUser = path(['data'], getUserResponse)
         const user = {
+          UID: credentials.UID,
           Permits: publicUser.Permits,
           Vehicles: publicUser.Vehicles,
           SID: authorizedUser.SID,
@@ -92,11 +93,15 @@ function * getPermit (checkBayApi, getPermitApi, applyPermitApi, action) {
           if (applyPermitResponse.ok) {
             const permit = getPermitResponse.data.PermitDetails
             yield put(UserActions.getPermitSuccess(permit))
-            let RecentlyParkedSpaces = yield AsyncStorage.getItem(Config.storageKeys.Recent)
+            let rawRecentlyParkedSpaces = yield AsyncStorage.getItem(Config.storageKeys.Recent)
+            let RecentlyParkedSpaces = JSON.parse(rawRecentlyParkedSpaces)
             if (!Array.isArray(RecentlyParkedSpaces)) RecentlyParkedSpaces = []
+            RecentlyParkedSpaces = RecentlyParkedSpaces.filter(s => s !== BayName)
             RecentlyParkedSpaces.unshift(BayName)
+            const recentlyParked5Spaces = RecentlyParkedSpaces.slice(0, 5)
+            yield put(UserActions.updateRecent(Immutable.fromJS(recentlyParked5Spaces)))
             AsyncStorage.setItem(Config.storageKeys.Permit, JSON.stringify(permit))
-            AsyncStorage.setItem(Config.storageKeys.Recent, JSON.stringify(RecentlyParkedSpaces.slice(0, 5)))
+            AsyncStorage.setItem(Config.storageKeys.Recent, JSON.stringify(recentlyParked5Spaces))
           }
         }
       }

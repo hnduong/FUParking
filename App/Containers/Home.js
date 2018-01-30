@@ -102,7 +102,7 @@ class Home extends FUPComponent {
     const isSelected = this.state.selectedRecentIndex === index
     return (
       <TouchableOpacity key={space} onPress={this.updateSelectedRecentIndex(index)}>
-        <Card>
+        <Card containerStyle={{ marginLeft: 0, marginRight: 0 }}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
             <FUPText light h6>{space}</FUPText>
             {isSelected && <Icon name='check' />}
@@ -160,7 +160,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   user: state.User.get('user'),
-  recent: state.User.get('recent')
+  recent: state.User.get('recent'),
+  permit: state.User.get('permit')
 })
 
 const mapDispatchToProps = dispatch => ({
