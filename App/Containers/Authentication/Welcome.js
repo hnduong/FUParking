@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ReactNative, { Animated, Easing, StyleSheet, Image, View, NativeModules, ScrollView } from 'react-native'
+import ReactNative, { Animated, StyleSheet, View, NativeModules, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import * as Animatable from 'react-native-animatable'
 import LottieView from 'lottie-react-native'
-
 import { CircularText, FUPScrollView, FUPComponent, FUPText, FUPButton } from '../../Components'
 
 import { App, Metrics, Colors } from '../../Theme'
@@ -23,7 +22,8 @@ class Welcome extends FUPComponent {
     pageWidth: 0,
     maxWidth: 0,
     currentWidth: 0,
-    numPages: 0
+    numPages: 0,
+    page: 0
   }
 
   componentDidMount () {
@@ -33,15 +33,15 @@ class Welcome extends FUPComponent {
   animateForward = () => {
     Animated.timing(this.state.orbitProgress, {
       duration: 3000,
-      toValue: 0.75
-    }).start(() => this.animateBack())
+      toValue: 0.77
+    }).start(this.animateBack)
   }
 
   animateBack = () => {
     Animated.timing(this.state.orbitProgress, {
       duration: 5000,
       toValue: 0.2
-    }).start(() => this.animateForward())
+    }).start(this.animateForward)
   }
 
   goToLogin = () => {
@@ -58,6 +58,10 @@ class Welcome extends FUPComponent {
     }
   }
 
+  onMomentumScrollEnd = (event) => {
+    this.setState({ page: this.state.numPages * event.nativeEvent.contentOffset.x / event.nativeEvent.contentSize.width })
+  }
+
   render () {
     return (
       <LinearGradient
@@ -69,6 +73,7 @@ class Welcome extends FUPComponent {
           horizontal
           pagingEnabled
           onLayout={this.onLayout}
+          onMomentumScrollEnd={this.onMomentumScrollEnd}
         >
           <View style={styles.slide}>
             <FUPScrollView scrollEnabled={false} >
@@ -115,6 +120,11 @@ class Welcome extends FUPComponent {
             </FUPScrollView>
           </View>
         </ScrollView>
+        <View style={styles.pagingContainer}>
+          {
+            [...new Array(this.state.numPages)]
+            .map((_, index) => index <= this.state.page ? <View style={styles.filled} /> : <View style={styles.unfilled} />)}
+        </View>
         <FUPButton
           style={styles.loginButtonContainer}
           textStyle={{ color: Colors.white, center: true }}
@@ -152,6 +162,13 @@ const styles = StyleSheet.create({
   dot: {
     marginBottom: 3 * Metrics.baseMargin
   },
+  filled: {
+    backgroundColor: Colors.white,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginLeft: 5
+  },
   linearGradient: {
     flex: 1
   },
@@ -173,6 +190,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  pagingContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 50,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent'
+  },
   welcomeTextContainer: {
     marginTop: Metrics.doubleBaseMargin
   },
@@ -181,6 +208,13 @@ const styles = StyleSheet.create({
   slide: {
     width: Metrics.screenWidth,
     height: Metrics.screenHeight
+  },
+  unfilled: {
+    backgroundColor: Colors.coolGrey,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginLeft: 5
   },
   text: {
     color: '#fff',
