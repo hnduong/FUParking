@@ -8,6 +8,8 @@ import registerScreens from './registerScreens'
 import Selectors from './Utils/Selectors'
 import Config from './config'
 
+import { iconsMap, iconsLoaded } from './Resources/Icons'
+
 const store = createStore()
 
 registerScreens(store, Provider)
@@ -15,7 +17,7 @@ registerScreens(store, Provider)
 class App extends React.Component {
   constructor (props) {
     super(props)
-    store.subscribe(this.onStoreUpdate.bind(this))
+    store.subscribe(this.onStoreUpdate)
     store.dispatch({ type: 'STARTUP' })
   }
 
@@ -29,51 +31,56 @@ class App extends React.Component {
     }
   }
 
-  startApp = (root) => {
-    switch (root) {
-      case Config.root.Authenticated:
-        Navigation.startTabBasedApp({
-          tabs: [
-            {
-              label: 'Available',
-              screen: 'AvailableSpaces'
+  startApp = async (root) => {
+    iconsLoaded.then(() => {
+      switch (root) {
+        case Config.root.Authenticated:
+          Navigation.startTabBasedApp({
+            tabs: [
+              {
+                label: 'Available',
+                screen: 'AvailableSpaces',
+                icon: iconsMap['ios-person']
+              },
+              {
+                label: 'Home',
+                screen: 'Home',
+                icon: iconsMap['ios-person']
+              },
+              {
+                label: 'Settings',
+                screen: 'Settings',
+                icon: iconsMap['ios-person']
+              }
+            ],
+            tabsStyle: {
+              initialTabIndex: 1
             },
-            {
-              label: 'Home',
-              screen: 'Home'
+            appStyle: {
+              orientation: 'portrait'
             },
-            {
-              label: 'Settings',
-              screen: 'Settings'
+            drawer: {
+              left: {
+                screen: 'Drawer'
+              },
+              type: 'MMDrawer',
+              animationType: 'parallax'
+            },
+            animationType: 'fade'
+          })
+          break
+        default:
+          Navigation.startSingleScreenApp({
+            screen: {
+              screen: 'Welcome',
+              navigatorStyle: {
+                navBarHidden: true,
+                statusBarHidden: false
+              }
             }
-          ],
-          tabsStyle: {
-            initialTabIndex: 1
-          },
-          appStyle: {
-            orientation: 'portrait'
-          },
-          drawer: {
-            left: {
-              screen: 'Drawer'
-            },
-            type: 'MMDrawer',
-            animationType: 'parallax'
-          },
-          animationType: 'fade'
-        })
-        break
-      default:
-        Navigation.startSingleScreenApp({
-          screen: {
-            screen: 'Welcome',
-            navigatorStyle: {
-              navBarHidden: true,
-              statusBarHidden: false
-            }
-          }
-        })
-    }
+          })
+      }
+    })
   }
 }
 

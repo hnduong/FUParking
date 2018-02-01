@@ -28,9 +28,7 @@ class Settings extends FUPComponent {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <FUPScrollView>
-
-        </FUPScrollView>
+        <FUPScrollView />
       </View>
     )
   }
