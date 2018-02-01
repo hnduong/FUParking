@@ -5,13 +5,13 @@ const { Types, Creators } = createActions({
   updateUser: ['user'],
 
   loginRequest: ['credentials'],
-  loginFailure: ['error'],
+  loginError: ['error'],
   loginSuccess: ['user'],
 
   logout: [],
 
   getPermitRequest: ['space', 'permit', 'vehicle'],
-  getPermitFailure: ['error'],
+  getPermitError: ['error'],
   getPermitSuccess: ['permit'],
 
   updatePermit: ['permit'],

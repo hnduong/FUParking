@@ -74,6 +74,7 @@ class Welcome extends FUPComponent {
           pagingEnabled
           onLayout={this.onLayout}
           onMomentumScrollEnd={this.onMomentumScrollEnd}
+          showsHorizontalScrollIndicator={false}
         >
           <View style={styles.slide}>
             <FUPScrollView scrollEnabled={false} >
@@ -123,7 +124,8 @@ class Welcome extends FUPComponent {
         <View style={styles.pagingContainer}>
           {
             [...new Array(this.state.numPages)]
-            .map((_, index) => index <= this.state.page ? <View style={styles.filled} /> : <View style={styles.unfilled} />)}
+              .map((_, index) => <View key={index} style={index <= this.state.page ? styles.filled : styles.unfilled} />)
+          }
         </View>
         <FUPButton
           style={styles.loginButtonContainer}

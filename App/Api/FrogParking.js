@@ -9,7 +9,7 @@ api.interceptors.response.use((response) => {
   if (response.status > 299) {
     response.ok = false
   } else {
-    response.ok = true
+    response.ok = response.data.Success
   }
   return response
 })

@@ -16,27 +16,32 @@ function * login (authorizeApi, getUserApi, action) {
     if (authorizeResponse.ok) {
       const authorizedUser = path(['data'], authorizeResponse)
       const getUserResponse = yield call(getUserApi, { SID: authorizedUser.SID })
-      if (getUserResponse.ok) {
-        const publicUser = path(['data'], getUserResponse)
-        const user = {
-          UID: credentials.UID,
-          Permits: publicUser.Permits,
-          Vehicles: publicUser.Vehicles,
-          SID: authorizedUser.SID,
-          ExpiresOn: authorizedUser.ExpiresOn,
-          UserRoles: authorizedUser.UserRoles,
-          OrganizationId: authorizedUser.OrganizationId,
-          CallCenterPhoneNumber: publicUser.CallCenterPhoneNumber
-        }
-        AsyncStorage.multiSet([
-          [Config.storageKeys.User, JSON.stringify(user)],
-          [Config.storageKeys.Credentials, JSON.stringify(credentials)]
-        ])
-        yield put(UserActions.loginSuccess(user))
-        yield put(AppActions.updateRoot(Config.root.Authenticated))
+      if (!getUserResponse.ok) {
+        const error = { response: getUserResponse }
+        throw error
       }
+      const publicUser = path(['data'], getUserResponse)
+      const user = {
+        UID: credentials.UID,
+        Permits: publicUser.Permits,
+        Vehicles: publicUser.Vehicles,
+        SID: authorizedUser.SID,
+        ExpiresOn: authorizedUser.ExpiresOn,
+        UserRoles: authorizedUser.UserRoles,
+        OrganizationId: authorizedUser.OrganizationId,
+        CallCenterPhoneNumber: publicUser.CallCenterPhoneNumber
+      }
+      AsyncStorage.multiSet([
+        [Config.storageKeys.User, JSON.stringify(user)],
+        [Config.storageKeys.Credentials, JSON.stringify(credentials)]
+      ])
+      yield put(UserActions.loginSuccess(user))
+      yield put(AppActions.updateRoot(Config.root.Authenticated))
     }
   } catch (error) {
+    if (error.response) {
+      yield put(UserActions.loginError({ message: 'Please check that your credentials have been entered correctly.', credentials: action.credentials }))
+    }
     yield put(AppActions.updateRoot(Config.root.Authentication))
   }
 }
