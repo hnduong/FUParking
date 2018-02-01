@@ -15,15 +15,6 @@ class Home extends FUPComponent {
     navBarHidden: false,
     topBarElevationShadowEnabled: false
   }
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        component: 'MenuButton',
-        id: '22',
-        showAsAction: 'always'
-      }
-    ]
-  };
 
   constructor (props) {
     super(props)
@@ -32,6 +23,15 @@ class Home extends FUPComponent {
       groupIndex: 1,
       selectedRecentIndex: 0
     }
+    this.setNavigatorToButtons({
+      rightButtons: [
+        {
+          component: 'MenuButton',
+          id: '22',
+          showAsAction: 'always'
+        }
+      ]
+    })
   }
 
   handleSubmit = () => {

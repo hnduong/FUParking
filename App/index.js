@@ -55,8 +55,7 @@ class App extends React.Component {
           },
           drawer: {
             left: {
-              screen: 'Drawer',
-              passProps: {}
+              screen: 'Drawer'
             },
             type: 'MMDrawer',
             animationType: 'parallax'

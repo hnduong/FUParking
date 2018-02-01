@@ -1,11 +1,13 @@
 import React from 'react'
 import Lottie from 'lottie-react-native'
+import { connect } from 'react-redux'
 import * as Animatable from 'react-native-animatable'
 import { Animated, StyleSheet, TouchableOpacity } from 'react-native'
+import FUPComponent from './FUPComponent'
 
 const menuJSON = require('../Resources/Lottie/menu3.json')
 
-class MenuButton extends React.Component {
+class MenuButton extends FUPComponent {
   state = {
     progress: new Animated.Value(0)
   }
@@ -15,19 +17,18 @@ class MenuButton extends React.Component {
       toValue: 0.5,
       duration: 2000
     }).start()
-    this.animatedView.slideInLeft(1000)
+    this.animatedView.slideInRight(1000)
   }
 
   handleOnPress = () => {
+    this.toggleDrawer()
+    this.animatedView.rotate(500)
     Animated.sequence([
       Animated.timing(this.state.progress, {
         toValue: 1,
         duration: 200
       })
-    ]).start()
-    setTimeout(() => {
-      this.setState({ progress: new Animated.Value(0.5) })
-    }, 200)
+    ]).start(() => this.setState({ progress: new Animated.Value(0.5) }))
   }
   render () {
     return (
@@ -61,4 +62,12 @@ const styles = StyleSheet.create({
   }
 })
 
-export default MenuButton
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuButton)
