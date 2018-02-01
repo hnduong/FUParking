@@ -18,7 +18,7 @@ class Home extends FUPComponent {
   static navigatorButtons = {
     leftButtons: [
       {
-        component: 'FUParking.MenuButton',
+        component: 'MenuButton',
         id: '22',
         showAsAction: 'always'
       }
@@ -38,6 +38,7 @@ class Home extends FUPComponent {
     const { groupIndex } = this.state
     switch (groupIndex) {
       case 0:
+
         break
       case 1:
         break

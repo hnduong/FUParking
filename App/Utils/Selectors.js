@@ -3,6 +3,9 @@
  */
 const getState = state => state
 
+const getRoot = state => state.App.get('root')
+
 export default {
-  getState
+  getState,
+  getRoot
 }

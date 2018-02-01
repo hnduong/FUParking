@@ -18,7 +18,7 @@ class Login extends FUPComponent {
   }
 
   goToRegister = () => {
-    this.navigate('FUParking.Register')
+    this.navigate('Register')
   }
 
   render () {

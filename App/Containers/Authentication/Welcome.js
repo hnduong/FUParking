@@ -45,7 +45,7 @@ class Welcome extends FUPComponent {
   }
 
   goToLogin = () => {
-    this.navigate('FUParking.Login')
+    this.navigate('Login')
   }
 
   onLayout = (event) => {

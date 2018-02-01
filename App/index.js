@@ -5,11 +5,12 @@ import { Provider } from 'react-redux'
 import createStore from './Redux'
 import registerScreens from './registerScreens'
 
+import Selectors from './Utils/Selectors'
+import Config from './config'
+
 const store = createStore()
 
 registerScreens(store, Provider)
-
-const getRoot = state => state.App.get('root')
 
 class App extends React.Component {
   constructor (props) {
@@ -21,7 +22,7 @@ class App extends React.Component {
   root = null
 
   onStoreUpdate = () => {
-    const root = getRoot(store.getState())
+    const root = Selectors.getRoot(store.getState())
     if (this.root !== root) {
       this.startApp(root)
       this.root = root
@@ -30,29 +31,49 @@ class App extends React.Component {
 
   startApp = (root) => {
     switch (root) {
-      case 'authentication':
+      case Config.root.Authenticated:
+        Navigation.startTabBasedApp({
+          tabs: [
+            {
+              label: 'Available',
+              screen: 'AvailableSpaces'
+            },
+            {
+              label: 'Home',
+              screen: 'Home'
+            },
+            {
+              label: 'Settings',
+              screen: 'Settings'
+            }
+          ],
+          tabsStyle: {
+            initialTabIndex: 1
+          },
+          appStyle: {
+            orientation: 'portrait'
+          },
+          drawer: {
+            left: {
+              screen: 'Drawer',
+              passProps: {}
+            },
+            type: 'MMDrawer',
+            animationType: 'parallax'
+          },
+          animationType: 'fade'
+        })
+        break
+      default:
         Navigation.startSingleScreenApp({
           screen: {
-            screen: 'FUParking.Welcome',
+            screen: 'Welcome',
             navigatorStyle: {
               navBarHidden: true,
               statusBarHidden: false
             }
           }
         })
-        break
-      case 'authenticated':
-        Navigation.startSingleScreenApp({
-          screen: {
-            screen: 'FUParking.Home'
-          },
-          drawer: {
-            left: {
-              screen: 'FUParking.Drawer'
-            }
-          }
-        })
-        break
     }
   }
 }
