@@ -35,6 +35,13 @@ function * login (authorizeApi, getUserApi, action) {
         [Config.storageKeys.User, JSON.stringify(user)],
         [Config.storageKeys.Credentials, JSON.stringify(credentials)]
       ])
+      const [rawPermit, rawRecent] = yield AsyncStorage.multiGet([Config.storageKeys.Permit, Config.storageKeys.Recent])
+      const recent = JSON.parse(rawRecent[1])
+      const permit = JSON.parse(rawPermit[1])
+      const expires = permit.ExpiresOn.match(/\d/g).join('')
+      const isExpired = new Date() > new Date(expires - Config.expirationBuffer)
+      if (!isExpired) yield put(UserActions.updatePermit(permit))
+      if (Array.isArray(recent)) yield put(UserActions.updateRecent(recent))
       yield put(UserActions.loginSuccess(user))
       yield put(AppActions.updateRoot(Config.root.Authenticated))
     }

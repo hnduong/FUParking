@@ -176,6 +176,21 @@ const App = {
     },
     width70: {
       width: '70%'
+    },
+    centerText: {
+      textAlign: 'center'
+    },
+    margin0: {
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: 0,
+      marginBottom: 0
+    },
+    padding0: {
+      paddingLeft: 0,
+      paddingRight: 0,
+      paddingTop: 0,
+      paddingBottom: 0
     }
   }
 }
