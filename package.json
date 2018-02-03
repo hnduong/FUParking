@@ -5,9 +5,11 @@
   "private": true,
   "scripts": {
     "ios": "react-native run-ios",
+    "ios-release": "react-native run-ios --configuration Release",
     "android": "react-native run-android",
+    "android-release": "react-native run-android --variant=release",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "ios-server": "node node_modules/react-native/local-cli/cli.js start --port 8082",
+    "android-server": "node node_modules/react-native/local-cli/cli.js start --port 8082",
     "test": "jest",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",

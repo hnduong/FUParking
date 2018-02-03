@@ -31,6 +31,8 @@ function * login (authorizeApi, getUserApi, action) {
         OrganizationId: authorizedUser.OrganizationId,
         CallCenterPhoneNumber: publicUser.CallCenterPhoneNumber
       }
+      yield put(UserActions.loginSuccess(user))
+      yield put(AppActions.updateRoot(Config.root.Authenticated))
       AsyncStorage.multiSet([
         [Config.storageKeys.User, JSON.stringify(user)],
         [Config.storageKeys.Credentials, JSON.stringify(credentials)]
@@ -42,14 +44,12 @@ function * login (authorizeApi, getUserApi, action) {
       const isExpired = new Date() > new Date(expires - Config.expirationBuffer)
       if (!isExpired) yield put(UserActions.updatePermit(permit))
       if (Array.isArray(recent)) yield put(UserActions.updateRecent(recent))
-      yield put(UserActions.loginSuccess(user))
-      yield put(AppActions.updateRoot(Config.root.Authenticated))
     }
   } catch (error) {
     if (error.response) {
       yield put(UserActions.loginError({ message: 'Please check that your credentials have been entered correctly.', credentials: action.credentials }))
     }
-    yield put(AppActions.updateRoot(Config.root.Authentication))
+    // yield put(AppActions.updateRoot(Config.root.Authentication))
   }
 }
 

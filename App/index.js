@@ -81,7 +81,7 @@ class App extends React.Component {
           }
         })
         break
-      default:
+      case Config.root.Authentication:
         Navigation.startSingleScreenApp({
           screen: {
             screen: 'Welcome',
@@ -91,6 +91,9 @@ class App extends React.Component {
             }
           }
         })
+        break
+      default:
+        break
     }
   }
 }
