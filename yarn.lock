@@ -139,21 +139,21 @@ anymatch@^1.3.0:
     micromatch "^2.1.5"
     normalize-path "^2.0.0"
 
-appcenter-analytics@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.1.0.tgz#81bae895b551fe68a53974f9ba50c66066560f24"
+appcenter-analytics@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/appcenter-analytics/-/appcenter-analytics-1.2.0.tgz#df5fb7ae0e5f44607caa1ebca31572741c069d90"
   dependencies:
-    appcenter "1.1.0"
+    appcenter "1.2.0"
 
-appcenter-crashes@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.1.0.tgz#14b60ef1ca3051ae673f520bd8c7bd66264e3ff7"
+appcenter-crashes@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/appcenter-crashes/-/appcenter-crashes-1.2.0.tgz#de22908cc8e38bcba7418bd156c8c95b49a85441"
   dependencies:
-    appcenter "1.1.0"
+    appcenter "1.2.0"
 
-appcenter-link-scripts@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.1.0.tgz#f7c7422fc681adfc583ea9c9ece4a1f4958c6fdb"
+appcenter-link-scripts@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/appcenter-link-scripts/-/appcenter-link-scripts-1.2.0.tgz#26e5c9946d8235406d1a57d480e4be7f98753bf7"
   dependencies:
     debug "^2.2.0"
     glob "^5.0.15"
@@ -163,11 +163,11 @@ appcenter-link-scripts@1.1.0:
     which "^1.2.11"
     xcode "^0.8.9"
 
-appcenter@1.1.0, appcenter@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.1.0.tgz#367eb7590a8babf8f340d458ec0ad529059be0b2"
+appcenter@1.2.0, appcenter@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/appcenter/-/appcenter-1.2.0.tgz#bfd93c86d226cb9c6870801e2996914ccf79caf3"
   dependencies:
-    appcenter-link-scripts "1.1.0"
+    appcenter-link-scripts "1.2.0"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -1363,19 +1363,33 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-color-convert@^1.9.0:
+color-convert@^1.9.0, color-convert@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.1.tgz#c1261107aeb2f294ebffec9ed9ecad529a6097ed"
   dependencies:
     color-name "^1.1.1"
 
-color-name@^1.1.1:
+color-name@^1.0.0, color-name@^1.1.1:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+
+color-string@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/color-string/-/color-string-1.5.2.tgz#26e45814bc3c9a7cbd6751648a41434514a773a9"
+  dependencies:
+    color-name "^1.0.0"
+    simple-swizzle "^0.2.2"
 
 color-support@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
+
+color@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/color/-/color-3.0.0.tgz#d920b4328d534a3ac8295d68f7bd4ba6c427be9a"
+  dependencies:
+    color-convert "^1.9.1"
+    color-string "^1.5.2"
 
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
@@ -2851,6 +2865,10 @@ invert-kv@^1.0.0:
 is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
+
+is-arrayish@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.3.1.tgz#c2dfc386abaa0c3e33c48db3fe87059e69065efd"
 
 is-buffer@^1.1.5:
   version "1.1.6"
@@ -4534,7 +4552,7 @@ react-native-audio@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/react-native-audio/-/react-native-audio-3.5.1.tgz#4acf1d5731c51cfdf76b0b8c8e60e0af41783f6e"
 
-react-native-config@^0.11.2:
+react-native-config@^0.11.5:
   version "0.11.5"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.5.tgz#516cb7b6ec437c7739236ca075971db3aabdcb95"
 
@@ -4551,7 +4569,7 @@ react-native-iphone-x-helper@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.0.2.tgz#7dbca530930f7c1ce8633cc8fd13ba94102992e1"
 
-react-native-keyboard-aware-scroll-view@^0.4.2:
+react-native-keyboard-aware-scroll-view@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.4.3.tgz#206e197730902ce01d026910ff8409a2a363e1ac"
   dependencies:
@@ -4564,7 +4582,7 @@ react-native-linear-gradient@^2.4.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-navigation@^1.1.348:
+react-native-navigation@^1.1.365:
   version "1.1.365"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.365.tgz#32853685b1d8a3f6ce4020a68be676946b5a3f66"
   dependencies:
@@ -5227,6 +5245,12 @@ simple-plist@^0.2.1:
     bplist-creator "0.0.7"
     bplist-parser "0.1.1"
     plist "2.0.1"
+
+simple-swizzle@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
+  dependencies:
+    is-arrayish "^0.3.1"
 
 slash@^1.0.0:
   version "1.0.0"

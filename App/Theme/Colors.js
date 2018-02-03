@@ -34,7 +34,10 @@ const colors = {
   grey: '#ededed',
   dodgerBlue: '#419bf9',
   lightGrey: 'rgba(36, 43, 53, 0.3)',
-  darkRed: 'rgb(186, 0, 20)'
+  darkRed: 'rgb(186, 0, 20)',
+  primary: '#4BC0C8',
+  secondary: '#C779D0',
+  tertiary: '#FEAC5E'
 }
 
 export default colors

@@ -13,13 +13,18 @@ class AvailableSpaces extends FUPComponent {
     navBarHidden: false,
     topBarElevationShadowEnabled: false
   }
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        component: 'MenuButton',
-        showAsAction: 'always'
-      }
-    ]
+
+  constructor (props) {
+    super(props)
+    this.setNavigatorToButtons({
+      rightButtons: [
+        {
+          component: 'MenuButton',
+          id: '22',
+          showAsAction: 'always'
+        }
+      ]
+    })
   }
 
   render () {
