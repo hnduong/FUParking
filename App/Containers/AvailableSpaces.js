@@ -9,11 +9,6 @@ import { FUPScrollView, FUPComponent } from '../Components'
 import { App } from '../Theme'
 
 class AvailableSpaces extends FUPComponent {
-  static navigatorStyle = {
-    navBarHidden: false,
-    topBarElevationShadowEnabled: false
-  }
-
   constructor (props) {
     super(props)
     this.setNavigatorToButtons({
@@ -30,7 +25,8 @@ class AvailableSpaces extends FUPComponent {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <FUPScrollView />
+        <FUPScrollView underHeader>
+        </FUPScrollView>
       </View>
     )
   }

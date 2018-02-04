@@ -11,10 +11,6 @@ import UserActions from '../Redux/User'
 import { App } from '../Theme'
 
 class Home extends FUPComponent {
-  static navigatorStyle = {
-    navBarHidden: false,
-    topBarElevationShadowEnabled: false
-  }
 
   constructor (props) {
     super(props)
@@ -137,7 +133,9 @@ class Home extends FUPComponent {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <FUPScrollView>
+        <FUPScrollView
+          underHeader
+        >
           <View style={[styles.section]}>
             <ButtonGroup
               onPress={this.updateIndex}

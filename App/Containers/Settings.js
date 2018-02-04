@@ -11,10 +11,6 @@ import UserActions from '../Redux/User'
 import { App } from '../Theme'
 
 class Settings extends FUPComponent {
-  static navigatorStyle = {
-    navBarHidden: false,
-    topBarElevationShadowEnabled: false
-  }
   constructor (props) {
     super(props)
     this.setNavigatorToButtons({
@@ -27,10 +23,12 @@ class Settings extends FUPComponent {
       ]
     })
   }
+
   render () {
     return (
       <View style={styles.mainContainer}>
-        <FUPScrollView />
+        <FUPScrollView underHeader>
+        </FUPScrollView>
       </View>
     )
   }
@@ -39,7 +37,7 @@ class Settings extends FUPComponent {
 const styles = StyleSheet.create({
   ...App.screen,
   ...App.form,
-  ...App.layout
+  ...App.layout,
 })
 
 const mapStateToProps = state => ({

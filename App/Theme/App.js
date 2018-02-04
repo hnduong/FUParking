@@ -65,6 +65,9 @@ const App = {
       flex: 1,
       backgroundColor: Colors.background
     },
+    underHeader: {
+      paddingTop: Metrics.navBarHeight
+    },
     backgroundImage: {
       position: 'absolute',
       top: 0,
