@@ -1,0 +1,697 @@
+{
+  "data": {
+    "Success": true,
+    "Errors": [],
+    "City": null,
+    "PublicParkingLocations": [
+      {
+        "Id": "1dacb33e-a381-4be6-bd5f-84817c04099d",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 1",
+        "Description": "<p>1Hr Parking</p>",
+        "ParkingTimeZoneDescription": "<p>1Hour Parking&nbsp;</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6506523448109,
+          "Longitude": -117.840892374516
+        },
+        "LocationLevels": [
+          {
+            "Id": "4e7f8e4d-a96a-4f97-ad7c-35b82b36ac99",
+            "Level": 1,
+            "TotalBays": 106,
+            "OccupiedBays": 32,
+            "VacantBays": 74,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "9b4dad0a-6f53-48a0-bf13-945818be23f6",
+        "Polygon": [
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.650884551099,
+            "Longitude": -117.841511964798
+          },
+          {
+            "Latitude": 33.6505697328073,
+            "Longitude": -117.841283977032
+          },
+          {
+            "Latitude": 33.6502750082567,
+            "Longitude": -117.840980887413
+          },
+          {
+            "Latitude": 33.6503598533066,
+            "Longitude": -117.840495407581
+          },
+          {
+            "Latitude": 33.6508287323369,
+            "Longitude": -117.84052759409
+          },
+          {
+            "Latitude": 33.6510118177411,
+            "Longitude": -117.840704619884
+          },
+          {
+            "Latitude": 33.6508555253472,
+            "Longitude": -117.841021120548
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          },
+          {
+            "Latitude": 33.6510430761858,
+            "Longitude": -117.841171324253
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "2f67b77b-63d1-4c80-8a8b-6247ee6ecbbd",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 2",
+        "Description": "<p>4 Hour</p>",
+        "ParkingTimeZoneDescription": "<p>4 Hour</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6506277844938,
+          "Longitude": -117.840160131454
+        },
+        "LocationLevels": [
+          {
+            "Id": "4494a34a-200a-40d2-a763-8ca3b01d43ce",
+            "Level": 1,
+            "TotalBays": 101,
+            "OccupiedBays": 89,
+            "VacantBays": 12,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "bb0726a1-5cf9-4f7a-b68c-75c7df9228f3",
+        "Polygon": [
+          {
+            "Latitude": 33.6509292060825,
+            "Longitude": -117.840447127819
+          },
+          {
+            "Latitude": 33.650437999989,
+            "Longitude": -117.840398848057
+          },
+          {
+            "Latitude": 33.6502392840002,
+            "Longitude": -117.840288877487
+          },
+          {
+            "Latitude": 33.6505429397081,
+            "Longitude": -117.839701473713
+          },
+          {
+            "Latitude": 33.6507193274583,
+            "Longitude": -117.839857041836
+          },
+          {
+            "Latitude": 33.6509671628004,
+            "Longitude": -117.840278148651
+          },
+          {
+            "Latitude": 33.6509894902736,
+            "Longitude": -117.840321063995
+          },
+          {
+            "Latitude": 33.6509292060825,
+            "Longitude": -117.840447127819
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "976b97cd-26ca-4937-a08c-fcbad6b26f1f",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 3",
+        "Description": "<p>1 Hour</p>",
+        "ParkingTimeZoneDescription": "<p>1 Hour</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6500673608082,
+          "Longitude": -117.839764505625
+        },
+        "LocationLevels": [
+          {
+            "Id": "6717f165-5635-42bd-8b1e-d960f124ec8e",
+            "Level": 1,
+            "TotalBays": 101,
+            "OccupiedBays": 23,
+            "VacantBays": 78,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "426a9490-de09-4bec-847e-04d0c755896a",
+        "Polygon": [
+          {
+            "Latitude": 33.6502504478319,
+            "Longitude": -117.840089052916
+          },
+          {
+            "Latitude": 33.6498574800824,
+            "Longitude": -117.840164154768
+          },
+          {
+            "Latitude": 33.6497078839336,
+            "Longitude": -117.839909344912
+          },
+          {
+            "Latitude": 33.6497391428519,
+            "Longitude": -117.839378267527
+          },
+          {
+            "Latitude": 33.6504089740866,
+            "Longitude": -117.839335352182
+          },
+          {
+            "Latitude": 33.6504938190044,
+            "Longitude": -117.839544564486
+          },
+          {
+            "Latitude": 33.6502504478319,
+            "Longitude": -117.840089052916
+          },
+          {
+            "Latitude": 33.6502504478319,
+            "Longitude": -117.840089052916
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "0543666e-160b-4415-85fc-3ea42579ae42",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 4",
+        "Description": "<p>45 Minutes</p>",
+        "ParkingTimeZoneDescription": "<p>45 Minutes</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6489799944843,
+          "Longitude": -117.838100194931
+        },
+        "LocationLevels": [
+          {
+            "Id": "2011403f-6a50-4937-9bdc-a872e1066bbb",
+            "Level": 1,
+            "TotalBays": 186,
+            "OccupiedBays": 31,
+            "VacantBays": 155,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "426a9490-de09-4bec-847e-04d0c755896a",
+        "Polygon": [
+          {
+            "Latitude": 33.6492791890521,
+            "Longitude": -117.837343811989
+          },
+          {
+            "Latitude": 33.649337241609,
+            "Longitude": -117.837998270988
+          },
+          {
+            "Latitude": 33.649203274111,
+            "Longitude": -117.838084101677
+          },
+          {
+            "Latitude": 33.6494265531584,
+            "Longitude": -117.838545441628
+          },
+          {
+            "Latitude": 33.648899613677,
+            "Longitude": -117.838937044144
+          },
+          {
+            "Latitude": 33.648546830357,
+            "Longitude": -117.838314771652
+          },
+          {
+            "Latitude": 33.6488549576404,
+            "Longitude": -117.838094830513
+          },
+          {
+            "Latitude": 33.6486897301038,
+            "Longitude": -117.837762236595
+          },
+          {
+            "Latitude": 33.6492791890521,
+            "Longitude": -117.837343811989
+          },
+          {
+            "Latitude": 33.6492791890521,
+            "Longitude": -117.837343811989
+          },
+          {
+            "Latitude": 33.6492791890521,
+            "Longitude": -117.837343811989
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "b9f9e5ff-cd2a-41ad-9570-b576fdaaf37b",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 5",
+        "Description": "<p>4 Hours</p>",
+        "ParkingTimeZoneDescription": "<p>4 Hours</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.649587313714,
+          "Longitude": -117.837789058685
+        },
+        "LocationLevels": [
+          {
+            "Id": "3ceb61e4-1eb0-4dcb-b098-30c1b4ef1b7f",
+            "Level": 1,
+            "TotalBays": 131,
+            "OccupiedBays": 40,
+            "VacantBays": 91,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "4f7b9d48-8d18-42da-8ce6-c7dbeae9e84d",
+        "Polygon": [
+          {
+            "Latitude": 33.6492657923026,
+            "Longitude": -117.837445735931
+          },
+          {
+            "Latitude": 33.6493283104489,
+            "Longitude": -117.83731430769
+          },
+          {
+            "Latitude": 33.6497771000945,
+            "Longitude": -117.837110459805
+          },
+          {
+            "Latitude": 33.6498306867615,
+            "Longitude": -117.837228477001
+          },
+          {
+            "Latitude": 33.6498842733951,
+            "Longitude": -117.838161885738
+          },
+          {
+            "Latitude": 33.6494131564319,
+            "Longitude": -117.838502526283
+          },
+          {
+            "Latitude": 33.649187644556,
+            "Longitude": -117.838054597378
+          },
+          {
+            "Latitude": 33.6493528711368,
+            "Longitude": -117.837872207165
+          },
+          {
+            "Latitude": 33.6493260776588,
+            "Longitude": -117.837660312653
+          },
+          {
+            "Latitude": 33.6492657923026,
+            "Longitude": -117.837445735931
+          },
+          {
+            "Latitude": 33.6492657923026,
+            "Longitude": -117.837445735931
+          },
+          {
+            "Latitude": 33.6492657923026,
+            "Longitude": -117.837445735931
+          },
+          {
+            "Latitude": 33.6492657923026,
+            "Longitude": -117.837445735931
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "b8d949b8-1b82-4455-99e6-366a242ad498",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 6",
+        "Description": "<p>45 minutes</p>",
+        "ParkingTimeZoneDescription": "<p>45 minutes</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6500628952662,
+          "Longitude": -117.837437689304
+        },
+        "LocationLevels": [
+          {
+            "Id": "b8575560-c8c4-4ba9-8eb1-bcea544c4d79",
+            "Level": 1,
+            "TotalBays": 129,
+            "OccupiedBays": 10,
+            "VacantBays": 119,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "bb0726a1-5cf9-4f7a-b68c-75c7df9228f3",
+        "Polygon": [
+          {
+            "Latitude": 33.6502526805981,
+            "Longitude": -117.837357223034
+          },
+          {
+            "Latitude": 33.6501789992837,
+            "Longitude": -117.837349176407
+          },
+          {
+            "Latitude": 33.6501968614263,
+            "Longitude": -117.837979495525
+          },
+          {
+            "Latitude": 33.6499043683741,
+            "Longitude": -117.838143110275
+          },
+          {
+            "Latitude": 33.6498842733951,
+            "Longitude": -117.837271392345
+          },
+          {
+            "Latitude": 33.649779332873,
+            "Longitude": -117.837225794792
+          },
+          {
+            "Latitude": 33.649774867316,
+            "Longitude": -117.83709436655
+          },
+          {
+            "Latitude": 33.6503866464628,
+            "Longitude": -117.837097048759
+          },
+          {
+            "Latitude": 33.6503777154116,
+            "Longitude": -117.837255299091
+          },
+          {
+            "Latitude": 33.6506233189808,
+            "Longitude": -117.837252616882
+          },
+          {
+            "Latitude": 33.6506478792992,
+            "Longitude": -117.837362587452
+          },
+          {
+            "Latitude": 33.6502526805981,
+            "Longitude": -117.837357223034
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "64951e6c-0208-4d4d-b238-43a1dc771b02",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 7",
+        "Description": "<p>Office Parking</p>",
+        "ParkingTimeZoneDescription": "<p>Office Parking</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6513333326303,
+          "Longitude": -117.838003635406
+        },
+        "LocationLevels": [
+          {
+            "Id": "2d538518-1203-45cc-80ae-cfcc9815c6d4",
+            "Level": 1,
+            "TotalBays": 370,
+            "OccupiedBays": 25,
+            "VacantBays": 345,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "82feaa6d-f1a2-4e68-9491-83c509952c91",
+        "Polygon": [
+          {
+            "Latitude": 33.6514092456928,
+            "Longitude": -117.83916503191
+          },
+          {
+            "Latitude": 33.6510341452027,
+            "Longitude": -117.838633954525
+          },
+          {
+            "Latitude": 33.6511859717885,
+            "Longitude": -117.838371098042
+          },
+          {
+            "Latitude": 33.6506702068553,
+            "Longitude": -117.837660312653
+          },
+          {
+            "Latitude": 33.650599875034,
+            "Longitude": -117.837484627962
+          },
+          {
+            "Latitude": 33.6505990377501,
+            "Longitude": -117.837358899414
+          },
+          {
+            "Latitude": 33.6506316918174,
+            "Longitude": -117.837359234691
+          },
+          {
+            "Latitude": 33.6506255517373,
+            "Longitude": -117.837215065956
+          },
+          {
+            "Latitude": 33.6503944611318,
+            "Longitude": -117.837194949388
+          },
+          {
+            "Latitude": 33.6504000430378,
+            "Longitude": -117.837115824222
+          },
+          {
+            "Latitude": 33.6510274469648,
+            "Longitude": -117.837145328521
+          },
+          {
+            "Latitude": 33.6514003147477,
+            "Longitude": -117.837357223033
+          },
+          {
+            "Latitude": 33.6516816390716,
+            "Longitude": -117.838006317616
+          },
+          {
+            "Latitude": 33.6517396900082,
+            "Longitude": -117.838698327541
+          },
+          {
+            "Latitude": 33.6516995009024,
+            "Longitude": -117.839148938656
+          },
+          {
+            "Latitude": 33.6514092456928,
+            "Longitude": -117.83916503191
+          },
+          {
+            "Latitude": 33.6514092456928,
+            "Longitude": -117.83916503191
+          },
+          {
+            "Latitude": 33.6514092456928,
+            "Longitude": -117.83916503191
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      },
+      {
+        "Id": "d6c95901-9e24-4ddf-8b7c-b15c1cdd1fdd",
+        "PublicParkingOperatorId": "7901757a-5295-4a7d-b72a-e2bec0515359",
+        "CityId": "0311d230-9977-48d1-8a54-9247b3c1ebcf",
+        "Name": "Zone 8",
+        "Description": "<p>4 Hour</p>",
+        "ParkingTimeZoneDescription": "<p>4 Hour</p>",
+        "IconUrl": "TODO",
+        "Location": {
+          "Latitude": 33.6513244016774,
+          "Longitude": -117.839937508106
+        },
+        "LocationLevels": [
+          {
+            "Id": "6eba29fa-358a-4bda-915c-2ffef61aec4c",
+            "Level": 1,
+            "TotalBays": 312,
+            "OccupiedBays": 43,
+            "VacantBays": 269,
+            "IsNowInService": true,
+            "Alternative": "None"
+          }
+        ],
+        "MarkerAlignmentId": "82feaa6d-f1a2-4e68-9491-83c509952c91",
+        "Polygon": [
+          {
+            "Latitude": 33.6513601254835,
+            "Longitude": -117.840677797794
+          },
+          {
+            "Latitude": 33.6509984212613,
+            "Longitude": -117.840388119221
+          },
+          {
+            "Latitude": 33.6510654036393,
+            "Longitude": -117.84025400877
+          },
+          {
+            "Latitude": 33.6506456465433,
+            "Longitude": -117.839567363262
+          },
+          {
+            "Latitude": 33.6511234549915,
+            "Longitude": -117.83916503191
+          },
+          {
+            "Latitude": 33.6516503808589,
+            "Longitude": -117.839331328869
+          },
+          {
+            "Latitude": 33.651846860865,
+            "Longitude": -117.83998042345
+          },
+          {
+            "Latitude": 33.6513601254835,
+            "Longitude": -117.840677797794
+          },
+          {
+            "Latitude": 33.6513601254835,
+            "Longitude": -117.840677797794
+          }
+        ],
+        "MarkerTypeId": "9eba1edb-6d8c-45d0-bbec-009129c35048",
+        "HasMaps": false
+      }
+    ],
+    "PagingInfo": {
+      "Page": 0,
+      "PageSize": 25,
+      "HasPreviousPage": false,
+      "HasNextPage": false
+    }
+  },
+  "status": 200,
+  "headers": {
+    "server": "Microsoft-IIS/7.5",
+    "cache-control": "private",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Mon, 05 Feb 2018 06:40:05 GMT",
+    "connection": "keep-alive",
+    "content-length": "11015",
+    "x-aspnet-version": "4.0.30319"
+  },
+  "config": {
+    "transformRequest": {},
+    "transformResponse": {},
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json;charset=utf-8"
+    },
+    "baseURL": "https://dataservices.frogparking.com/FrogParkingService.svc",
+    "method": "post",
+    "url": "https://dataservices.frogparking.com/FrogParkingService.svc/GetPublicParkingLocations",
+    "data": "{\"ApplicationDetails\":null,\"OperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"IncludeLevels\":true,\"Page\":0,\"PageSize\":25}"
+  },
+  "request": {
+    "UNSENT": 0,
+    "OPENED": 1,
+    "HEADERS_RECEIVED": 2,
+    "LOADING": 3,
+    "DONE": 4,
+    "readyState": 4,
+    "status": 200,
+    "timeout": 0,
+    "withCredentials": true,
+    "upload": {},
+    "_aborted": false,
+    "_hasError": false,
+    "_method": "POST",
+    "_response": "{\"Success\":true,\"Errors\":[],\"City\":null,\"PublicParkingLocations\":[{\"Id\":\"1dacb33e-a381-4be6-bd5f-84817c04099d\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 1\",\"Description\":\"<p>1Hr Parking<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>1Hour Parking&nbsp;<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6506523448109,\"Longitude\":-117.840892374516},\"LocationLevels\":[{\"Id\":\"4e7f8e4d-a96a-4f97-ad7c-35b82b36ac99\",\"Level\":1,\"TotalBays\":106,\"OccupiedBays\":32,\"VacantBays\":74,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"9b4dad0a-6f53-48a0-bf13-945818be23f6\",\"Polygon\":[{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.650884551099,\"Longitude\":-117.841511964798},{\"Latitude\":33.6505697328073,\"Longitude\":-117.841283977032},{\"Latitude\":33.6502750082567,\"Longitude\":-117.840980887413},{\"Latitude\":33.6503598533066,\"Longitude\":-117.840495407581},{\"Latitude\":33.6508287323369,\"Longitude\":-117.84052759409},{\"Latitude\":33.6510118177411,\"Longitude\":-117.840704619884},{\"Latitude\":33.6508555253472,\"Longitude\":-117.841021120548},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253},{\"Latitude\":33.6510430761858,\"Longitude\":-117.841171324253}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"2f67b77b-63d1-4c80-8a8b-6247ee6ecbbd\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 2\",\"Description\":\"<p>4 Hour<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>4 Hour<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6506277844938,\"Longitude\":-117.840160131454},\"LocationLevels\":[{\"Id\":\"4494a34a-200a-40d2-a763-8ca3b01d43ce\",\"Level\":1,\"TotalBays\":101,\"OccupiedBays\":89,\"VacantBays\":12,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"bb0726a1-5cf9-4f7a-b68c-75c7df9228f3\",\"Polygon\":[{\"Latitude\":33.6509292060825,\"Longitude\":-117.840447127819},{\"Latitude\":33.650437999989,\"Longitude\":-117.840398848057},{\"Latitude\":33.6502392840002,\"Longitude\":-117.840288877487},{\"Latitude\":33.6505429397081,\"Longitude\":-117.839701473713},{\"Latitude\":33.6507193274583,\"Longitude\":-117.839857041836},{\"Latitude\":33.6509671628004,\"Longitude\":-117.840278148651},{\"Latitude\":33.6509894902736,\"Longitude\":-117.840321063995},{\"Latitude\":33.6509292060825,\"Longitude\":-117.840447127819}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"976b97cd-26ca-4937-a08c-fcbad6b26f1f\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 3\",\"Description\":\"<p>1 Hour<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>1 Hour<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6500673608082,\"Longitude\":-117.839764505625},\"LocationLevels\":[{\"Id\":\"6717f165-5635-42bd-8b1e-d960f124ec8e\",\"Level\":1,\"TotalBays\":101,\"OccupiedBays\":23,\"VacantBays\":78,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"426a9490-de09-4bec-847e-04d0c755896a\",\"Polygon\":[{\"Latitude\":33.6502504478319,\"Longitude\":-117.840089052916},{\"Latitude\":33.6498574800824,\"Longitude\":-117.840164154768},{\"Latitude\":33.6497078839336,\"Longitude\":-117.839909344912},{\"Latitude\":33.6497391428519,\"Longitude\":-117.839378267527},{\"Latitude\":33.6504089740866,\"Longitude\":-117.839335352182},{\"Latitude\":33.6504938190044,\"Longitude\":-117.839544564486},{\"Latitude\":33.6502504478319,\"Longitude\":-117.840089052916},{\"Latitude\":33.6502504478319,\"Longitude\":-117.840089052916}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"0543666e-160b-4415-85fc-3ea42579ae42\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 4\",\"Description\":\"<p>45 Minutes<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>45 Minutes<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6489799944843,\"Longitude\":-117.838100194931},\"LocationLevels\":[{\"Id\":\"2011403f-6a50-4937-9bdc-a872e1066bbb\",\"Level\":1,\"TotalBays\":186,\"OccupiedBays\":31,\"VacantBays\":155,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"426a9490-de09-4bec-847e-04d0c755896a\",\"Polygon\":[{\"Latitude\":33.6492791890521,\"Longitude\":-117.837343811989},{\"Latitude\":33.649337241609,\"Longitude\":-117.837998270988},{\"Latitude\":33.649203274111,\"Longitude\":-117.838084101677},{\"Latitude\":33.6494265531584,\"Longitude\":-117.838545441628},{\"Latitude\":33.648899613677,\"Longitude\":-117.838937044144},{\"Latitude\":33.648546830357,\"Longitude\":-117.838314771652},{\"Latitude\":33.6488549576404,\"Longitude\":-117.838094830513},{\"Latitude\":33.6486897301038,\"Longitude\":-117.837762236595},{\"Latitude\":33.6492791890521,\"Longitude\":-117.837343811989},{\"Latitude\":33.6492791890521,\"Longitude\":-117.837343811989},{\"Latitude\":33.6492791890521,\"Longitude\":-117.837343811989}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"b9f9e5ff-cd2a-41ad-9570-b576fdaaf37b\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 5\",\"Description\":\"<p>4 Hours<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>4 Hours<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.649587313714,\"Longitude\":-117.837789058685},\"LocationLevels\":[{\"Id\":\"3ceb61e4-1eb0-4dcb-b098-30c1b4ef1b7f\",\"Level\":1,\"TotalBays\":131,\"OccupiedBays\":40,\"VacantBays\":91,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"4f7b9d48-8d18-42da-8ce6-c7dbeae9e84d\",\"Polygon\":[{\"Latitude\":33.6492657923026,\"Longitude\":-117.837445735931},{\"Latitude\":33.6493283104489,\"Longitude\":-117.83731430769},{\"Latitude\":33.6497771000945,\"Longitude\":-117.837110459805},{\"Latitude\":33.6498306867615,\"Longitude\":-117.837228477001},{\"Latitude\":33.6498842733951,\"Longitude\":-117.838161885738},{\"Latitude\":33.6494131564319,\"Longitude\":-117.838502526283},{\"Latitude\":33.649187644556,\"Longitude\":-117.838054597378},{\"Latitude\":33.6493528711368,\"Longitude\":-117.837872207165},{\"Latitude\":33.6493260776588,\"Longitude\":-117.837660312653},{\"Latitude\":33.6492657923026,\"Longitude\":-117.837445735931},{\"Latitude\":33.6492657923026,\"Longitude\":-117.837445735931},{\"Latitude\":33.6492657923026,\"Longitude\":-117.837445735931},{\"Latitude\":33.6492657923026,\"Longitude\":-117.837445735931}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"b8d949b8-1b82-4455-99e6-366a242ad498\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 6\",\"Description\":\"<p>45 minutes<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>45 minutes<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6500628952662,\"Longitude\":-117.837437689304},\"LocationLevels\":[{\"Id\":\"b8575560-c8c4-4ba9-8eb1-bcea544c4d79\",\"Level\":1,\"TotalBays\":129,\"OccupiedBays\":10,\"VacantBays\":119,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"bb0726a1-5cf9-4f7a-b68c-75c7df9228f3\",\"Polygon\":[{\"Latitude\":33.6502526805981,\"Longitude\":-117.837357223034},{\"Latitude\":33.6501789992837,\"Longitude\":-117.837349176407},{\"Latitude\":33.6501968614263,\"Longitude\":-117.837979495525},{\"Latitude\":33.6499043683741,\"Longitude\":-117.838143110275},{\"Latitude\":33.6498842733951,\"Longitude\":-117.837271392345},{\"Latitude\":33.649779332873,\"Longitude\":-117.837225794792},{\"Latitude\":33.649774867316,\"Longitude\":-117.83709436655},{\"Latitude\":33.6503866464628,\"Longitude\":-117.837097048759},{\"Latitude\":33.6503777154116,\"Longitude\":-117.837255299091},{\"Latitude\":33.6506233189808,\"Longitude\":-117.837252616882},{\"Latitude\":33.6506478792992,\"Longitude\":-117.837362587452},{\"Latitude\":33.6502526805981,\"Longitude\":-117.837357223034}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"64951e6c-0208-4d4d-b238-43a1dc771b02\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 7\",\"Description\":\"<p>Office Parking<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>Office Parking<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6513333326303,\"Longitude\":-117.838003635406},\"LocationLevels\":[{\"Id\":\"2d538518-1203-45cc-80ae-cfcc9815c6d4\",\"Level\":1,\"TotalBays\":370,\"OccupiedBays\":25,\"VacantBays\":345,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"82feaa6d-f1a2-4e68-9491-83c509952c91\",\"Polygon\":[{\"Latitude\":33.6514092456928,\"Longitude\":-117.83916503191},{\"Latitude\":33.6510341452027,\"Longitude\":-117.838633954525},{\"Latitude\":33.6511859717885,\"Longitude\":-117.838371098042},{\"Latitude\":33.6506702068553,\"Longitude\":-117.837660312653},{\"Latitude\":33.650599875034,\"Longitude\":-117.837484627962},{\"Latitude\":33.6505990377501,\"Longitude\":-117.837358899414},{\"Latitude\":33.6506316918174,\"Longitude\":-117.837359234691},{\"Latitude\":33.6506255517373,\"Longitude\":-117.837215065956},{\"Latitude\":33.6503944611318,\"Longitude\":-117.837194949388},{\"Latitude\":33.6504000430378,\"Longitude\":-117.837115824222},{\"Latitude\":33.6510274469648,\"Longitude\":-117.837145328521},{\"Latitude\":33.6514003147477,\"Longitude\":-117.837357223033},{\"Latitude\":33.6516816390716,\"Longitude\":-117.838006317616},{\"Latitude\":33.6517396900082,\"Longitude\":-117.838698327541},{\"Latitude\":33.6516995009024,\"Longitude\":-117.839148938656},{\"Latitude\":33.6514092456928,\"Longitude\":-117.83916503191},{\"Latitude\":33.6514092456928,\"Longitude\":-117.83916503191},{\"Latitude\":33.6514092456928,\"Longitude\":-117.83916503191}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false},{\"Id\":\"d6c95901-9e24-4ddf-8b7c-b15c1cdd1fdd\",\"PublicParkingOperatorId\":\"7901757a-5295-4a7d-b72a-e2bec0515359\",\"CityId\":\"0311d230-9977-48d1-8a54-9247b3c1ebcf\",\"Name\":\"Zone 8\",\"Description\":\"<p>4 Hour<\\/p>\",\"ParkingTimeZoneDescription\":\"<p>4 Hour<\\/p>\",\"IconUrl\":\"TODO\",\"Location\":{\"Latitude\":33.6513244016774,\"Longitude\":-117.839937508106},\"LocationLevels\":[{\"Id\":\"6eba29fa-358a-4bda-915c-2ffef61aec4c\",\"Level\":1,\"TotalBays\":312,\"OccupiedBays\":43,\"VacantBays\":269,\"IsNowInService\":true,\"Alternative\":\"None\"}],\"MarkerAlignmentId\":\"82feaa6d-f1a2-4e68-9491-83c509952c91\",\"Polygon\":[{\"Latitude\":33.6513601254835,\"Longitude\":-117.840677797794},{\"Latitude\":33.6509984212613,\"Longitude\":-117.840388119221},{\"Latitude\":33.6510654036393,\"Longitude\":-117.84025400877},{\"Latitude\":33.6506456465433,\"Longitude\":-117.839567363262},{\"Latitude\":33.6511234549915,\"Longitude\":-117.83916503191},{\"Latitude\":33.6516503808589,\"Longitude\":-117.839331328869},{\"Latitude\":33.651846860865,\"Longitude\":-117.83998042345},{\"Latitude\":33.6513601254835,\"Longitude\":-117.840677797794},{\"Latitude\":33.6513601254835,\"Longitude\":-117.840677797794}],\"MarkerTypeId\":\"9eba1edb-6d8c-45d0-bbec-009129c35048\",\"HasMaps\":false}],\"PagingInfo\":{\"Page\":0,\"PageSize\":25,\"HasPreviousPage\":false,\"HasNextPage\":false}}",
+    "_url": "https://dataservices.frogparking.com/FrogParkingService.svc/GetPublicParkingLocations",
+    "_timedOut": false,
+    "_trackingName": 1002,
+    "_incrementalEvents": true,
+    "responseHeaders": {
+      "Server": "Microsoft-IIS/7.5",
+      "Cache-Control": "private",
+      "Content-Type": "application/json; charset=utf-8",
+      "Date": "Mon, 05 Feb 2018 06:40:05 GMT",
+      "Connection": "keep-alive",
+      "Content-Length": "11015",
+      "X-AspNet-Version": "4.0.30319"
+    },
+    "_requestId": null,
+    "_headers": {
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json;charset=utf-8"
+    },
+    "_responseType": "",
+    "_sent": true,
+    "_lowerCaseResponseHeaders": {
+      "server": "Microsoft-IIS/7.5",
+      "cache-control": "private",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Mon, 05 Feb 2018 06:40:05 GMT",
+      "connection": "keep-alive",
+      "content-length": "11015",
+      "x-aspnet-version": "4.0.30319"
+    },
+    "_subscriptions": [],
+    "responseURL": "https://dataservices.frogparking.com/FrogParkingService.svc/GetPublicParkingLocations"
+  },
+  "ok": true
+}

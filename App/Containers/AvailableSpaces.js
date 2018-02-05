@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, StyleSheet, View, Picker, TouchableOpacity } from 'react-native'
-import Immutable from 'immutable'
-import { ButtonGroup } from 'react-native-elements'
+import { StyleSheet, View } from 'react-native'
+import MapboxGL from '@mapbox/react-native-mapbox-gl'
 
-import { FUPScrollView, FUPComponent } from '../Components'
+import { FUPComponent } from '../Components'
+// import FrogApi from '../Api/FrogParking'
 
-import { App } from '../Theme'
+import PublicParkingLocations from '../Resources/PublicParkingLocations.json'
+
+import { App, Colors } from '../Theme'
 
 class AvailableSpaces extends FUPComponent {
   constructor (props) {
@@ -20,17 +22,73 @@ class AvailableSpaces extends FUPComponent {
         }
       ]
     })
+    this.state = {
+      parkingPolygons: []
+    }
+  }
+
+  async componentWillMount () {
+    // const response = await FrogApi.getPublicParkingLocations()
+    const response = PublicParkingLocations
+    if (response.ok) {
+      const parkingPolygons = response.data.PublicParkingLocations.map((ppl) => {
+        const Polygon = ppl.Polygon
+        if (Array.isArray(Polygon)) {
+          const formattedPolygon = Polygon.map(p => ([p.Longitude, p.Latitude]))
+          const polygon = {
+            type: 'Feature',
+            properties: {},
+            geometry: {
+              type: 'Polygon',
+              coordinates: [formattedPolygon]
+            }
+          }
+          return polygon
+        }
+      })
+      this.setState({ parkingPolygons })
+    }
   }
 
   render () {
     return (
       <View style={styles.mainContainer}>
-        <FUPScrollView underHeader>
-        </FUPScrollView>
+        <View style={styles.flex}>
+          <MapboxGL.MapView
+            showUserLocation
+            centerCoordinate={[-117.839, 33.65]}
+            zoomLevel={16}
+            compassEnabled
+            logoEnabled
+            userTrackingMode={MapboxGL.UserTrackingModes.Follow}
+            style={StyleSheet.absoluteFill}
+          >
+            <MapboxGL.ShapeSource
+              id='parkingPolygonSource'
+              shape={{
+                type: 'FeatureCollection',
+                features: this.state.parkingPolygons
+              }}
+            >
+              <MapboxGL.FillLayer
+                id='parkingPolygonFill'
+                style={mapStyles.parkingPolygonFill}
+              />
+            </MapboxGL.ShapeSource>
+          </MapboxGL.MapView>
+        </View>
       </View>
     )
   }
 }
+
+const mapStyles = MapboxGL.StyleSheet.create({
+  parkingPolygonFill: {
+    fillAntialias: true,
+    fillColor: Colors.bloodOrange,
+    fillOutlineColor: 'rgba(255, 255, 255, 0.84)'
+  }
+})
 
 const styles = StyleSheet.create({
   ...App.screen,

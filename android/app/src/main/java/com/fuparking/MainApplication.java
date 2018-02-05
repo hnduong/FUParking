@@ -16,6 +16,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.mapbox.rctmgl.RCTMGLPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +41,8 @@ public class MainApplication extends NavigationApplication {
         new AppCenterReactNativePackage(MainApplication.this),
         new VectorIconsPackage(),
         new LinearGradientPackage(),
-        new LottiePackage()
+        new LottiePackage(),
+        new RCTMGLPackage()
     );
   }
 

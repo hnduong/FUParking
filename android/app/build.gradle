@@ -100,7 +100,7 @@ android {
     defaultConfig {
         applicationId project.env.get("APP_ID")
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         ndk {
@@ -146,6 +146,7 @@ android {
 }
 
 dependencies {
+    compile project(':mapbox-react-native-mapbox-gl')
     compile project(':react-native-audio')
     compile project(':react-native-voice')
     compile project(':lottie-react-native')

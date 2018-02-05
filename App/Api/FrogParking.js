@@ -82,11 +82,21 @@ const getPermit = ({ SID, ApplicationDetails, PermitPrefix, PermitNumber, Unique
 const applyPermit = ({ SID, PermitPrefix, PermitNumber, Email, BayName, VehicleRegistrationNumber, ApplicationDetails }) =>
   api.post('/ApplyPermitToBay', { SID, PermitPrefix, PermitNumber, Email, BayName, VehicleRegistrationNumber, ApplicationDetails })
 
+const getPublicParkingLocations = () =>
+  api.post('/GetPublicParkingLocations', {
+    ApplicationDetails: null,
+    OperatorId: '7901757a-5295-4a7d-b72a-e2bec0515359',
+    IncludeLevels: true,
+    Page: 0,
+    PageSize: 25
+  })
+
 export default {
   authorize,
   getPublicUserAccountsDetails,
   getExtendedApplicationConfiguration,
   checkBay,
   getPermit,
-  applyPermit
+  applyPermit,
+  getPublicParkingLocations
 }

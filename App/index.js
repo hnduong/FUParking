@@ -2,6 +2,8 @@ import React from 'react'
 import { Navigation } from 'react-native-navigation'
 import { Provider } from 'react-redux'
 import Color from 'color'
+import MapboxGL from '@mapbox/react-native-mapbox-gl'
+import Secrets from 'react-native-config'
 
 import createStore from './Redux'
 import registerScreens from './registerScreens'
@@ -14,6 +16,8 @@ import * as TabImages from './Resources/Images'
 
 // import createImages from './Resources/Icons/createImage'
 // createImages(12, ['cogs', 'home', 'map'])
+
+MapboxGL.setAccessToken(Secrets.MAPBOX_TOKEN)
 
 const store = createStore()
 
