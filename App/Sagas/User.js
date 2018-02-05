@@ -3,7 +3,7 @@ import { path } from 'ramda'
 import { AsyncStorage } from 'react-native'
 import Immutable from 'immutable'
 
-import Selectors from '../Utils/Selectors'
+import selectors from '../Utils/selectors'
 import UserActions from '../Redux/User'
 import AppActions from '../Redux/App'
 
@@ -71,7 +71,7 @@ function * getPermit (checkBayApi, getPermitApi, applyPermitApi, action) {
     const { space, permit, vehicle } = action
     if (typeof space === 'string' && space.trim().length > 0) {
       const BayName = space.trim()
-      const state = yield select(Selectors.getState)
+      const state = yield select(selectors.getState)
       const User = Immutable.toJS(state.User)
       const { user } = User
       const { SID, UID: Email } = user

@@ -8,7 +8,7 @@ import Secrets from 'react-native-config'
 import createStore from './Redux'
 import registerScreens from './registerScreens'
 
-import Selectors from './Utils/Selectors'
+import selectors from './Utils/selectors'
 import Config from './config'
 import { Colors } from './Theme'
 
@@ -33,7 +33,7 @@ class App extends React.Component {
   root = null
 
   onStoreUpdate = () => {
-    const root = Selectors.getRoot(store.getState())
+    const root = selectors.getRoot(store.getState())
     if (this.root !== root) {
       this.startApp(root)
       this.root = root

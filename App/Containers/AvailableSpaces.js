@@ -23,7 +23,7 @@ class AvailableSpaces extends FUPComponent {
       ]
     })
     this.state = {
-      parkingPolygons: []
+      zones: []
     }
   }
 
@@ -31,8 +31,9 @@ class AvailableSpaces extends FUPComponent {
     // const response = await FrogApi.getPublicParkingLocations()
     const response = PublicParkingLocations
     if (response.ok) {
-      const parkingPolygons = response.data.PublicParkingLocations.map((ppl) => {
+      const zones = response.data.PublicParkingLocations.map((ppl) => {
         const Polygon = ppl.Polygon
+        const Location = ppl.Location
         if (Array.isArray(Polygon)) {
           const formattedPolygon = Polygon.map(p => ([p.Longitude, p.Latitude]))
           const polygon = {
@@ -43,10 +44,53 @@ class AvailableSpaces extends FUPComponent {
               coordinates: [formattedPolygon]
             }
           }
-          return polygon
+          const zone = {
+            polygon,
+            location: ([Location.Longitude, Location.Latitude])
+          }
+          return zone
         }
       })
-      this.setState({ parkingPolygons })
+      this.setState({ zones })
+    }
+  }
+
+  hasZones = (zones) => Array.isArray(zones) && zones.length > 0
+
+  renderZone = (zone, index) => {
+    return (
+      <MapboxGL.ShapeSource
+        onPress={() => { console.log('presssed')}}
+        key={index}
+        id={`parkingPolygonSource${index}`}
+        shape={{
+          type: 'FeatureCollection',
+          features: [zone.polygon]
+        }}
+      >
+        <MapboxGL.FillLayer
+          id={`parkingPolygonFill${index}`}
+          style={mapStyles.parkingPolygonFill}
+        />
+      </MapboxGL.ShapeSource>
+    )
+  }
+
+  renderZones = () => {
+    const { zones } = this.state
+    if (this.hasZones(zones)) {
+      return zones.map(this.renderZone)
+    }
+  }
+
+  renderMarker = () => {
+    
+  }
+
+  renderMarkers = () => {
+    const { zones } = this.state
+    if (this.hasZones(zones)) {
+      return zones.map(this.renderMarker)
     }
   }
 
@@ -55,26 +99,16 @@ class AvailableSpaces extends FUPComponent {
       <View style={styles.mainContainer}>
         <View style={styles.flex}>
           <MapboxGL.MapView
-            showUserLocation
+            ref={this.setRef('mapView')}
             centerCoordinate={[-117.839, 33.65]}
-            zoomLevel={16}
+            showUserLocation
+            zoomLevel={15.5}
             compassEnabled
             logoEnabled
-            userTrackingMode={MapboxGL.UserTrackingModes.Follow}
             style={StyleSheet.absoluteFill}
           >
-            <MapboxGL.ShapeSource
-              id='parkingPolygonSource'
-              shape={{
-                type: 'FeatureCollection',
-                features: this.state.parkingPolygons
-              }}
-            >
-              <MapboxGL.FillLayer
-                id='parkingPolygonFill'
-                style={mapStyles.parkingPolygonFill}
-              />
-            </MapboxGL.ShapeSource>
+            {this.renderMarkers()}
+            {this.renderZones()}
           </MapboxGL.MapView>
         </View>
       </View>
@@ -86,7 +120,7 @@ const mapStyles = MapboxGL.StyleSheet.create({
   parkingPolygonFill: {
     fillAntialias: true,
     fillColor: Colors.bloodOrange,
-    fillOutlineColor: 'rgba(255, 255, 255, 0.84)'
+    fillOutlineColor: Colors.border
   }
 })
 
