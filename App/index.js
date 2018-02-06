@@ -65,7 +65,7 @@ class App extends React.Component {
             tabBarButtonColor: Colors.white,
             tabBarSelectedButtonColor: Color(Colors.secondary).darken(0.2),
             tabBarBackgroundColor: Color(Colors.secondary).lighten(0.2),
-            initialTabIndex: 1
+            initialTabIndex: 0
           },
           appStyle: {
             tabBarButtonColor: Colors.white,
@@ -81,7 +81,8 @@ class App extends React.Component {
               screen: 'Drawer'
             },
             type: 'MMDrawer',
-            animationType: 'slide'
+            animationType: 'slide',
+            disableOpenGesture: true
           }
         })
         break

@@ -15,6 +15,7 @@ const FUPText = props => {
   let textColor = styles[`${theme}Text`]
   if (props.subtitle) fontFamily = { fontFamily: Fonts.type.subtitle }
   let textSize = { fontSize: Fonts.size.regular }
+  let backgroundColor = { backgroundColor: 'transparent' }
   if (props.bold) fontFamily = { fontFamily: Fonts.type.bold }
   if (props.h1) textSize = { fontSize: Fonts.size.h1 }
   if (props.h2) textSize = { fontSize: Fonts.size.h2 }
@@ -26,9 +27,10 @@ const FUPText = props => {
   if (props.medium) textSize = { fontSize: Fonts.size.medium }
   if (props.small) textSize = { fontSize: Fonts.size.small }
   if (props.color) textColor = { color: props.color }
+  if (props.backgroundColor) backgroundColor = { backgroundColor: props.backgroundColor }
   const customTextStyles = props.style || {}
   if (props.center) customTextStyles.textAlign = 'center'
-  const textStyles = StyleSheet.flatten([fontFamily, textColor, textSize, letterSpacing, customTextStyles])
+  const textStyles = StyleSheet.flatten([fontFamily, textColor, textSize, letterSpacing, backgroundColor, customTextStyles])
   return (
     <Text style={textStyles}>{props.text || props.children}</Text>
   )
