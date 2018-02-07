@@ -16,6 +16,7 @@ const metrics = {
   screenHeight: width < height ? height : width,
   navBarHeight: (Platform.OS === 'ios') ? 64 : 54,
   iPhoneXDimensions: 812,
+  tabBarHeight: Platform.OS === 'ios' ? (width === 812 || height === 812 ? 85 : 75) : 75,
   buttonRadius: 4,
   buttonHeight: 55,
   icons: {

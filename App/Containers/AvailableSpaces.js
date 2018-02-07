@@ -4,10 +4,9 @@ import { Animated, StyleSheet, View, TouchableOpacity, FlatList, ScrollView } fr
 import MapboxGL from '@mapbox/react-native-mapbox-gl'
 import SlidingUpPanel from 'rn-sliding-up-panel'
 import { Card, Icon } from 'react-native-elements'
-import * as Animatable from 'react-native-animatable'
 
 import { FUPComponent, FUPText } from '../Components'
-// import FrogApi from '../Api/FrogParking'
+import FrogApi from '../Api/FrogParking'
 
 import PublicParkingLocations from '../Resources/PublicParkingLocations.json'
 
@@ -45,7 +44,7 @@ class AvailableSpaces extends FUPComponent {
     const response = PublicParkingLocations
     if (response.ok) {
       const zones = response.data.PublicParkingLocations.map((ppl) => {
-        const { Polygon, Location, Name, Description } = ppl
+        const { Polygon, Location, Name, Description, LocationLevels } = ppl
 
         if (Array.isArray(Polygon)) {
           const formattedPolygon = Polygon.map(p => ([p.Longitude, p.Latitude]))
@@ -57,7 +56,11 @@ class AvailableSpaces extends FUPComponent {
               coordinates: [formattedPolygon]
             }
           }
+          const { TotalBays, OccupiedBays, VacantBays } = LocationLevels[0]
           const zone = {
+            totalBays: TotalBays,
+            occupiedBays: OccupiedBays,
+            vacantBays: VacantBays,
             name: Name,
             polygon,
             description: Description.replace(/<p>/g, '').replace(/<\/p>/g, ''),
@@ -138,6 +141,10 @@ class AvailableSpaces extends FUPComponent {
   }
 
   onPressMap = () => {
+    this.closePanel()
+  }
+
+  closePanel = () => {
     const { bottom } = this.props.draggableRange
     this.panel.transitionTo(bottom)
   }
@@ -157,6 +164,7 @@ class AvailableSpaces extends FUPComponent {
       outputRange: [1, 0.8725, 0.75, 0.8725, 1],
       extrapolate: 'clamp'
     })
+
     const transform = [{ rotate }, { scale }]
 
     return (
@@ -166,31 +174,31 @@ class AvailableSpaces extends FUPComponent {
         ref={this.setRef('panel')}
         draggableRange={draggableRange}
         onDrag={this.onPanelDrag}
+        duration={1000}
       >
         <TouchableOpacity style={[styles.upIconContainer, { transform }]} onPress={this.onIconPress}>
           <Icon name='arrow-downward' color={Colors.white} />
         </TouchableOpacity>
-        <View style={{ height: draggableRange.top, paddingHorizontal: 10}}>
-          <View style={[styles.panelHeader, { height: 120, borderBottomWidth: 1, borderTopLeftRadius: 5, borderTopRightRadius: 5 }]}>
+        <View style={{ height: draggableRange.top, paddingHorizontal: 10 }}>
+          <View style={[styles.panelHeader, { height: 120, borderTopLeftRadius: 5, borderTopRightRadius: 5 }]}>
             <FUPText style={{ color: '#FFF' }}>Parking Availability</FUPText>
           </View>
-          <View style={[styles.panelBody, { height: draggableRange.top * 0.7 }]}>
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <View style={{ width: 50, height: 50, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', margin: 20 }}>
-                <FUPText light small>123</FUPText>
-              </View>
-              {/* <FlatList
-                scrollEnabled
-                data={this.state.zones}
-                keyExtractor={(item, index) => index}
-                renderItem={({ item: zone }) => {
+          <View style={[styles.panelBody, { height: draggableRange.top - 120 }]}>
+            <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
+              {
+                this.state.zones.reverse().map((zone, index) => {
                   return (
-                    <Card style={{ width: 50 }}>
-                      <FUPText light small>{zone.name}{'\n'}{zone.description}</FUPText>
-                    </Card>
+                    <View key={index} style={{ justifyContent: 'center', alignItems: 'center', height: (draggableRange.top - 120 - Metrics.tabBarHeight - 20) / 4, width: Metrics.screenWidth / 2 - 20, padding: 5, margin: 5, borderRadius: 5, backgroundColor: Colors.white }}>
+                      <FUPText light small>
+                        <FUPText bold light small>{zone.name}</FUPText>
+                        <FUPText light small>: {zone.description}</FUPText>
+                      </FUPText>
+                      <FUPText light small>{zone.occupiedBays} occupied/{zone.totalBays} available</FUPText>
+                      <FUPText bold light medium>{zone.vacantBays} spaces available</FUPText>
+                    </View>
                   )
-                }}
-              /> */}
+                })
+              }
             </View>
           </View>
         </View>
